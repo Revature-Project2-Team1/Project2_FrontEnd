@@ -7,6 +7,7 @@ const routes: Routes = [
 {path: 'loginPatient', component:LoginPatientComponent},
 {path: 'home', component:HomeComponent}
 
+
 ];
 
 @NgModule({
