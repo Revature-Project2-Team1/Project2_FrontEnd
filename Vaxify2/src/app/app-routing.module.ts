@@ -6,8 +6,9 @@ import { LoginProviderComponent } from './login-provider/login-provider.componen
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 
 const routes: Routes = [
-{path: 'loginPatient', component:LoginPatientComponent},
+{ path: '', redirectTo: '/home', pathMatch: 'full' },
 {path: 'home', component:HomeComponent},
+{path: 'loginPatient', component:LoginPatientComponent},
 {path: 'loginProvider', component:LoginProviderComponent},
 {path: 'registerPatient', component:RegisterPatientComponent}
 
