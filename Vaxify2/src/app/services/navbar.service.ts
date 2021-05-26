@@ -10,7 +10,9 @@ export class NavbarService {
   private isLoggedIn = new Subject();
 
   constructor() {
-    this.addItem({ text: 'Login', path: 'login' });
+    this.addItem({ text: 'Login Patient', path: '/loginPatient' });
+    this.addItem({ text: 'Login Provider', path: '/loginProvider' });
+    this.addItem({ text: 'Login Provider', path: '/registerPatient' });
     this.isLoggedIn.next(false);
   }
 
