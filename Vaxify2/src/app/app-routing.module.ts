@@ -13,7 +13,10 @@ const routes: Routes = [
 {path: 'registerPatient', component:RegisterPatientComponent}
 
 
+
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

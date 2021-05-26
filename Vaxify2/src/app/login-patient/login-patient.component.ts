@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,12 @@ import {Router} from '@angular/router';
 })
 export class LoginPatientComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn = false;
+  role = '';
+
+  constructor(private navbarService: NavbarService) {
+    //this.navbarService.getLoginStatus().subscribe(status => this.isLoggedIn = status);
+  }
 
   ngOnInit(): void {
   }
