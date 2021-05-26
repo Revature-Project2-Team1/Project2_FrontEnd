@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Patient } from './patient';
+import { Provider } from './provider';
+ 
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Vaxify2';
+  
 }
+
+
+
+  
+  
+
