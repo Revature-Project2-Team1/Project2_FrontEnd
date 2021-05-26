@@ -9,9 +9,18 @@ import { Provider } from './provider';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  loggedOut=true;
+  patientLoggedIn= false;
+  providerLoggedIn=false;
+
   title = 'Vaxify2';
   
 }
+
+
+
+
 
 
 
