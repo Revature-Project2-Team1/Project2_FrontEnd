@@ -1,5 +1,12 @@
+import { Address } from "cluster";
+import { VaccineRecord } from "./vaccine-record";
+
 export class Patient {
-    username:string;
-    password:string;
-    
+   ssn:String;
+   dob:String;
+   fullName:String;
+   status:String;
+   address:Address;
+   vaccineRecordList: VaccineRecord[];
+     
 }
