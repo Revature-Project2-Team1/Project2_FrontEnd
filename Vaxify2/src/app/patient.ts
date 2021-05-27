@@ -1,4 +1,4 @@
-import { Address } from "cluster";
+import { Address } from "./address";
 import { VaccineRecord } from "./vaccine-record";
 
 export class Patient {
