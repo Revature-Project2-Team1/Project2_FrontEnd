@@ -1,29 +1,39 @@
 <div class="container">
-    <div class="card ">
-      <div class="card-header">
-        <img src='../../assets/project2.png' width="200" height="200">
+  <div class="card ">
+    <div class="card-header">
+      <img src='../../assets/project2.png' width="200" height="200">
       <br>
       <br>
-        Login as Provider
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Enter<br> Credentials:</h5>
-        
+      Login as Provider
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Enter<br> Credentials:</h5>
 
-        <form>
-          <input class= "form-control" id="username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="Username">
-           <!--  -->
-          <br>
-          <br>
-          <input class= "form-control" id="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" style="align-content:center; margin: 0 auto; width:100%;"  type="password" placeholder="Password">
-          <!--  -->
-           <br>
-          <br>
-          <a class="btn btn-dark btn-outline-light" (click)="checkCred()">Login</a>
-        </form>
-      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input class="form-control" id="username" [(ngModel)]="user.username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+            style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="Username" formControlName="username">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+          <input class="form-control" id="password" [(ngModel)]="user.password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            style="align-content:center; margin: 0 auto; width:100%;" type="password" placeholder="Password" formControlName="password">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <a class="btn btn-dark btn-outline-light">Login</a>
+      </form>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
+</div>
+<br>
+<br>
+<br>

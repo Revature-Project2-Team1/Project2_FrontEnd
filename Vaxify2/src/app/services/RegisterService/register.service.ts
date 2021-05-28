@@ -16,5 +16,9 @@ export class RegisterService {
 
   register(patientCreds: PatientCreds) {
     return this.http.post(`${environment.apiUrl}/patient/patientCreds`,patientCreds);//insert post method here
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 1fd99d38bb9a50423bfb1b03947674991e70ba57
 }
 }
