@@ -1,5 +1,7 @@
 export class PatientCreds{
-    username:String;
-    email:String;
-    password:String;
+    username:string;
+    email:string;
+    password:string;
+    fullname:string;
+    SSN:string;
 }
