@@ -53,7 +53,6 @@ export class RegisterPatientComponent implements OnInit {
     }
 
     this.loading = true;
-
     this.registerService.register(this.form.value)
 
         .pipe(first())
