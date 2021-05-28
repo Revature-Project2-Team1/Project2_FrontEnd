@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="card ">
+      <div class="card-header"><br>
+        <img src='../../assets/project2.1.png' width="250" height="250">
+        <br>
+        <br>
+      </div>
+      <circle-progress
+  [percent]="100"
+  [radius]="50"
+  [outerStrokeWidth]="7"
+  [innerStrokeWidth]="0"
+  [outerStrokeColor]='formatColor(formatTitle(1))'
+  [innerStrokeColor]="'#ffffff'"
+  [showTitle]="true"
+  [showSubtitle]="false"
+  [title]='formatTitle(1)'
+  [titleColor]='formatColor(formatTitle(1))'
+  [units] = "'s'"
+  [animation]="true"
+  [animationDuration]="60000"
+></circle-progress>
+      <div class="card-body">
+        <h5 class="card-title">Generate your QR Code for others to verify. 
+            <br><br> 
+            Upload another person's QR Code to be scanned</h5><br>
+
+            <small>The QR code will contain the vaccination status <br> of the person it belongs to</small>
+        
+        <form>
+            <br>
+          <button class="btn btn-dark btn-outline-light" type="button" (click)="generateQR()">Generate QR Code</button>
+          <br><br>
+          <button class="btn btn-dark btn-outline-light" type="button" (click)="verifyQR()">Upload a QR to Scan</button>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
