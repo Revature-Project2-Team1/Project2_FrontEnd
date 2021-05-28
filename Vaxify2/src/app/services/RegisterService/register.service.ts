@@ -15,12 +15,10 @@ import { PatientCreds } from '../../models/patient-creds';
 export class RegisterService {
 
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   register(patientCreds: PatientCreds) {
-    return this.http.post(`${environment.apiUrl}/patient/patientCreds`,patientCreds);//insert post method here
+    return this.http.post(`${environment.apiUrl}/patient/patientCreds`, patientCreds);//insert post method here
 
+  }
 }
-}
-}
-
