@@ -8,7 +8,7 @@ import { LoginProviderComponent } from './login-provider/login-provider.componen
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule//,
+    //Validators
   ],
   providers: [],
   bootstrap: [AppComponent]
