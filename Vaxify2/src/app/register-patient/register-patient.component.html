@@ -38,6 +38,16 @@
           </div>
           <br>
           <br>
+          <div class="form-Group">
+            <input style="align-content:center; margin: 0 auto; width:100%;" type="username" placeholder="username" formControlName="username" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+              <div *ngIf="f.username.errors.minlength">Must be 3 characters or more</div>
+              <div *ngIf="f.username.errors.maxlength">Must be less than 20 characters</div>
+          </div>
+          </div>
+          <br>
+          <br>
           <button [disabled]="loading" class="btn btn-dark btn-outline-light">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Register
