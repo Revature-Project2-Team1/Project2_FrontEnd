@@ -8,8 +8,10 @@ import { LoginProviderComponent } from './login-provider/login-provider.componen
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
+
 
 // Import ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
@@ -27,6 +29,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
+
       FormsModule,
       ReactiveFormsModule,
     
@@ -42,8 +45,6 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       animationDuration: 300,
       
     })
- 
-
   ],
   providers: [],
   bootstrap: [AppComponent]

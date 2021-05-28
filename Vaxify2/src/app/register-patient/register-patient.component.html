@@ -1,50 +1,53 @@
 <div class="container">
-    <div class="card ">
-      <div class="card-header">
-        <img src='../../assets/project2.png' width="200" height="200">
-      <br>
-      <br>
-        Register Patient
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Enter<br> Credentials:</h5>
 
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <input style="align-content:center; margin: 0 auto; width:100%; " type="text" formControlName="Email" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-            <div *ngIf="submitted && f.email.errors" class ="invalid-feedback">
-              <div *ngIf="f.email.errors.required">Email invalid</div>
-            </div>
+  <div class="card ">
+    <div class="card-header">
+      <img src='../../assets/project2.png' width="200" height="200">
+    <br>
+    <br>
+      Register Patient
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Enter<br> Credentials:</h5>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input style="align-content:center; margin: 0 auto; width:100%; " type="text" formControlName="Email" placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+          <div *ngIf="submitted && f.Email.errors" class ="invalid-feedback">
+            <div *ngIf="f.Email.errors.required">Please enter email.</div>
+            <div *ngIf="f.Email.errors.email">Invalid Email</div>
           </div>
-          <br>
-          <br>
-          <div class="form-group">
-            <input style="align-content:center; margin: 0 auto; width:100%;" type="password" placeholder="Password">
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">Password is required</div>
-              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-          </div>
-          </div>
-          <br>
-          <br>
-          <div class="form-group">
-            <input style="align-content:center; margin: 0 auto; width:100%;" type="SSN" placeholder="SSN">
-            <div *ngIf="submitted && f.SSN.errors" class="invalid-feedback">
-              <div *ngIf="f.SSN.errors.required">SSN is required</div>
-          </div>
-          </div>
-          <br>
-          <br>
-          <button [disabled]="loading" class="btn btn-dark btn-outline-light">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Register
-          </button>
-        </form>
-        
-      </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+          <input style="align-content:center; margin: 0 auto; width:100%;" type="password" formControlName="password" placeholder="Password"class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+            <div *ngIf="f.password.errors.maxlength">Password must be at no more than 200 characters long</div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-Group">
+          <input style="align-content:center; margin: 0 auto; width:100%;" type="SSN" placeholder="SSN" formControlName="SSN" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.SSN.errors }">
+          <div *ngIf="submitted && f.SSN.errors" class="invalid-feedback">
+            <div *ngIf="f.SSN.errors.required">SSN is required</div>
+            <div *ngIf="f.SSN.errors.minlength">Must be exactly 9 digits</div>
+            <div *ngIf="f.SSN.errors.maxlength">Must be exactly 9 digits</div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <button [disabled]="loading" class="btn btn-dark btn-outline-light">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Register
+        </button>
+      </form>
     </div>
   </div>
-  
-      <br>
-      <br>
-      <br>
+</div>
+
+    <br>
+    <br>
+    <br>
