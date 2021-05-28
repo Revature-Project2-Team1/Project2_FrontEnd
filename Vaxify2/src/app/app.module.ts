@@ -15,6 +15,8 @@ import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-co
 
 // Import ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
+import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     LoginProviderComponent,
     RegisterPatientComponent,
     AlertComponent,
-    QrCodeGeneratorReaderComponent
+    QrCodeGeneratorReaderComponent,
+    ProviderDashboardComponent,
+    PatientDashboardComponent
   ],
   imports: [
     BrowserModule,
