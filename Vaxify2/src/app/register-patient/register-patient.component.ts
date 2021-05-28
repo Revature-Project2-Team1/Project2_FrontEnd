@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
 
@@ -18,6 +19,7 @@ export class RegisterPatientComponent implements OnInit {
   loading = false;
   submitted = false;
 
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -34,6 +36,7 @@ export class RegisterPatientComponent implements OnInit {
       Email: ['',[ Validators.required, Validators.email]],
       password: ['',[Validators.required, Validators.minLength(8),Validators.maxLength(200)]],
       username:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+
   });
   }
   get f() { return this.form.controls; } //used to get form fields
@@ -50,7 +53,9 @@ export class RegisterPatientComponent implements OnInit {
     }
 
     this.loading = true;
+
     this.registerService.register(this.form.value)
+
         .pipe(first())
         .subscribe({
             next: () => {
