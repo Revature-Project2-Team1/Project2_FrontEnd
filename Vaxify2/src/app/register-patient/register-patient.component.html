@@ -16,34 +16,24 @@
             <div *ngIf="f.Email.errors.required">Please enter email.</div>
             <div *ngIf="f.Email.errors.email">Invalid Email</div>
           </div>
-        </div>
-        <br>
-        <br>
-        <div class="form-group">
-          <input style="align-content:center; margin: 0 auto; width:100%;" type="password" formControlName="password" placeholder="Password"class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
-            <div *ngIf="f.password.errors.maxlength">Password must be at no more than 200 characters long</div>
-        </div>
-        </div>
-        <br>
-        <br>
-        <div class="form-Group">
-          <input style="align-content:center; margin: 0 auto; width:100%;" type="SSN" placeholder="SSN" formControlName="SSN" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.SSN.errors }">
-          <div *ngIf="submitted && f.SSN.errors" class="invalid-feedback">
-            <div *ngIf="f.SSN.errors.required">SSN is required</div>
-            <div *ngIf="f.SSN.errors.minlength">Must be exactly 9 digits</div>
-            <div *ngIf="f.SSN.errors.maxlength">Must be exactly 9 digits</div>
-        </div>
-        </div>
-        <br>
-        <br>
-        <button [disabled]="loading" class="btn btn-dark btn-outline-light">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                  Register
-        </button>
-      </form>
+          <br>
+          <br>
+          <div class="form-Group">
+            <input style="align-content:center; margin: 0 auto; width:100%;" type="username" placeholder="username" formControlName="username" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+              <div *ngIf="f.username.errors.minlength">Must be 3 characters or more</div>
+              <div *ngIf="f.username.errors.maxlength">Must be less than 20 characters</div>
+          </div>
+          </div>
+          <br>
+          <br>
+          <button [disabled]="loading" class="btn btn-dark btn-outline-light">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
