@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProviderCreds } from '../models/provider-creds';
 
 @Component({
   selector: 'app-login-provider',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginProviderComponent implements OnInit {
 
+  user: ProviderCreds = {username: "", password: ""};
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  checkCred(): void{
+    console.log(this.user.username);
+    console.log(this.user.password);
+  }
 }
