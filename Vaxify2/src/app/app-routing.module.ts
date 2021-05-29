@@ -16,7 +16,7 @@ const routes: Routes = [
 {path: 'registerPatient', component:RegisterPatientComponent},
 {path: 'qr-generator-reader', component:QrCodeGeneratorReaderComponent},
 {path:'patient-dashboard',component:PatientDashboardComponent},
-{path:'provider-dashobard', component:ProviderDashboardComponent}
+{path:'provider-dashboard', component:ProviderDashboardComponent}
 
 
 

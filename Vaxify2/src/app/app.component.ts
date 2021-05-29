@@ -5,7 +5,6 @@ import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { LoginProviderComponent } from './login-provider/login-provider.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { NavbarService } from './services/NavBarService/navbar.service';
- 
 
 @Component({
   selector: 'app-root',
@@ -37,6 +36,7 @@ export class AppComponent implements OnInit{
     this.router.navigate(['home']);
   }
   
+
 }
 
 

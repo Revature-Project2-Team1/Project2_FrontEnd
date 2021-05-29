@@ -28,4 +28,33 @@
     align-content:center;
     margin: 0 auto;
   }
+  .aclass {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    max-width:500px;
+    max-height: 500px;
+
+    max-height: 100%;
+    max-width: 100%;
+
+    width: 500px;
+    
+  }
+
+  .aclass >img {
+
+    width: 500px;
+    
+  }
   
+  textarea {
+      margin-top: 15px; 
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 250px;
+      opacity: .7;
+  }

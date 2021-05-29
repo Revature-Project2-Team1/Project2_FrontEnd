@@ -1,25 +1,51 @@
 <div class="container">
     <div class="card ">
       <div class="card-header"><br>
-        <img src='../../assets/project2.1.png' width="250" height="250">
+        <img [hidden]="!inboundClick" src='../../assets/project2.1.png' width="250" height="250">
         <br>
         <br>
-      </div>
-      <circle-progress
-  [percent]="100"
+
+        
+  <ngx-qrcode
+  [hidden]="inboundClick"
+  [elementType]="elementType"
+  [errorCorrectionLevel]="correctionLevel"
+  [value]="value"
+  cssClass="aclass"
+
+  
+  ></ngx-qrcode>
+
+  <textarea [(ngModel)] = "value"></textarea>
+
+  <circle-progress
+  [(ngModel)]=duration
+  [(ngModel)]=percent
+  [(ngModel)]=percent_e
+
+  [percent]="percent"
   [radius]="50"
   [outerStrokeWidth]="7"
   [innerStrokeWidth]="0"
-  [outerStrokeColor]='formatColor(formatTitle(1))'
+  [outerStrokeColor]='formatColor(formatTitle(percent_e))'
   [innerStrokeColor]="'#ffffff'"
   [showTitle]="true"
   [showSubtitle]="false"
-  [title]='formatTitle(1)'
-  [titleColor]='formatColor(formatTitle(1))'
+  [title]='formatTitle(percent_e)'
+  [titleColor]='formatColor(formatTitle(percent_e))'
   [units] = "'s'"
   [animation]="true"
-  [animationDuration]="60000"
+  [animationDuration]="duration"
+  [hidden]="inboundClick"
+  
 ></circle-progress>
+
+<div class="rows">
+  <div class="a-bunch-of-styles-for-my-button">
+      <button class="more-styles"  (click)="generateQR()"  [routerLink]="['/qr-generator-reader']" href="#">Test</button>
+  </div>
+</div>
+
       <div class="card-body">
         <h5 class="card-title">Generate your QR Code for others to verify. 
             <br><br> 

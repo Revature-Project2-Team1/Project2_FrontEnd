@@ -18,6 +18,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 
+//import qr
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,9 @@ import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
       
-    })
+    }),
+    NgxQRCodeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
