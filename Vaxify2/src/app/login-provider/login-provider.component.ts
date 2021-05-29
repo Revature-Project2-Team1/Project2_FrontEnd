@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ProviderCreds } from '../models/provider-creds';
-import { AccountService } from '../services/AccountService/account.service';
 import { AlertService } from '../services/AlertService/alert.service';
+import { RegisterService } from '../services/RegisterService/register.service';
 
 @Component({
   selector: 'app-login-provider',
@@ -22,7 +22,7 @@ export class LoginProviderComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private accountService: AccountService,
+    private registerService: RegisterService,
     private alertService: AlertService
   ) { }
 
@@ -48,7 +48,7 @@ export class LoginProviderComponent implements OnInit {
     }
 
     this.loading = true;
-    this.accountService.register(this.form.value)
+    this.registerService.register(this.form.value)
         .pipe(first())
         .subscribe({
             next: () => {

@@ -14,7 +14,6 @@ import { PatientCreds } from '../../models/patient-creds';
 })
 export class RegisterService {
 
-
   constructor(private router: Router, private http: HttpClient) { }
 
   register(patientCreds: PatientCreds) {
