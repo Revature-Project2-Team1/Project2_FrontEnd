@@ -8,7 +8,6 @@ import { LoginProviderComponent } from './login-provider/login-provider.componen
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
 
@@ -21,6 +20,8 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
 
 //import qr
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { ChangeEmailComponent } from './change-email/change-email.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     ProviderDashboardComponent,
     PatientDashboardComponent,
     UpdatePatientComponent,
+    ChangeEmailComponent,
   ],
   imports: [
     BrowserModule,
