@@ -1,4 +1,3 @@
-  
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -6,39 +5,37 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} f
 import { first } from 'rxjs/operators';
 
 
-import {RegisterService} from '../services/RegisterService/register.service';
+import {UpdatePatientService} from '../services/PatientService/update-patient.service';
 import { AlertService } from '../services/AlertService/alert.service';
+import {NoWhiteSpaceValidator} from '../Validators/no-whitespace';
 
 
 @Component({
-  selector: 'app-register-patient',
-  templateUrl: 'register-patient.component.html',
-  styleUrls: ['register-patient.component.css']
+  selector: 'app-update-patient',
+  templateUrl: './update-patient.component.html',
+  styleUrls: ['./update-patient.component.css']
 })
-export class RegisterPatientComponent implements OnInit {
+export class UpdatePatientComponent implements OnInit {
   form: FormGroup;
   loading = false;
   submitted = false;
-
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private registerService: RegisterService,
+    private updatePatientService: UpdatePatientService,
     private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-
-      customerSSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      email: ['',[ Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(8),Validators.maxLength(200)]],
-      username:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
-
+      SSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      lot:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), NoWhiteSpaceValidator.cannotContainSpace]],
+      date: ['', [Validators.required, Validators.pattern('')]]
   });
   }
+
   get f() { return this.form.controls; } //used to get form fields
 
   onSubmit() {
@@ -53,7 +50,7 @@ export class RegisterPatientComponent implements OnInit {
     }
     console.log(this.form.value);
     this.loading = true;
-    this.registerService.register(this.form.value)
+    this.updatePatientService.update(this.form.value)
 
         .pipe(first())
         .subscribe({
@@ -67,5 +64,4 @@ export class RegisterPatientComponent implements OnInit {
             }
         });
     }
-
 }

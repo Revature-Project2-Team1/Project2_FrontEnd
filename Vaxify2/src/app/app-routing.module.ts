@@ -7,6 +7,7 @@ import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { UpdatePatientComponent } from './update-patient/update-patient.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +17,9 @@ const routes: Routes = [
 {path: 'registerPatient', component:RegisterPatientComponent},
 {path: 'qr-generator-reader', component:QrCodeGeneratorReaderComponent},
 {path:'patient-dashboard',component:PatientDashboardComponent},
-{path:'provider-dashboard', component:ProviderDashboardComponent}
+{path:'provider-dashobard', component:ProviderDashboardComponent},
+{path:'patientUpdate', component:UpdatePatientComponent}
+
 
 
 

@@ -7,17 +7,16 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { PatientCreds } from '../../models/patient-creds';
-
+import { VaccineRecord } from 'src/app/models/vaccine-record';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class UpdatePatientService {
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
-  register(patientCreds: PatientCreds) {
-    return this.http.post(`${environment.apiUrl}/patient/patientCreds`, patientCreds);//insert post method here
-
+  update(vaccineRecords:VaccineRecord){
+    return this.http.put(`${environment.apiUrl}/provider/vaxRecords`, vaccineRecords)
   }
 }
