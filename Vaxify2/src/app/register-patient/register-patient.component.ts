@@ -11,8 +11,8 @@ import { AlertService } from '../services/AlertService/alert.service';
 
 @Component({
   selector: 'app-register-patient',
-  templateUrl: './register-patient.component.html',
-  styleUrls: ['./register-patient.component.css']
+  templateUrl: 'register-patient.component.html',
+  styleUrls: ['register-patient.component.css']
 })
 export class RegisterPatientComponent implements OnInit {
   form: FormGroup;
@@ -31,9 +31,8 @@ export class RegisterPatientComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
 
-      FullName: ['',[ Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      SSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      Email: ['',[ Validators.required, Validators.email]],
+      customerSSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      email: ['',[ Validators.required, Validators.email]],
       password: ['',[Validators.required, Validators.minLength(8),Validators.maxLength(200)]],
       username:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
 
@@ -46,12 +45,12 @@ export class RegisterPatientComponent implements OnInit {
 
     // reset alerts on submit
     this.alertService.clear();
-
+    
     // stop here if form is invalid
     if (this.form.invalid) {
         return;
     }
-
+    console.log(this.form.value);
     this.loading = true;
     this.registerService.register(this.form.value)
 
