@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card ">
+      <div class="card-header">
+        <img src='../../assets/project2.png' width="200" height="200">
+      <br>
+      <br>
+        Register Patient
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Enter<br> Credentials:</h5>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-Group">
+              <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="SSN" formControlName="SSN" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.SSN.errors }">
+              <div *ngIf="submitted && f.SSN.errors" class="invalid-feedback">
+                <div *ngIf="f.SSN.errors.required">SSN is required</div>
+                <div *ngIf="f.SSN.errors.minlength">Must be exactly 9 digits</div>
+                <div *ngIf="f.SSN.errors.maxlength">Must be exactly 9 digits</div>
+            </div>
+            </div>
+            <br>
+            <div class="form-Group">
+                <label for="Vaccine Type">Vaccine Type:</label>
+                <select name="Vaccine Type" id="VaccineType">
+                  <option value="Moderna">Moderna</option>
+                  <option value="Pfizer">Pfizer</option>
+                  <option value="Johnson&Johnson">Johnson&Johnson</option>
+                </select>   
+            </div>
+            <br>
+            <br>
+            <div class="form-Group">
+                <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="Lot#" formControlName="lot" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.lot.errors }">
+                <div *ngIf="submitted && f.lot.errors" class="invalid-feedback">
+                  <div *ngIf="f.lot.errors.required">lot is required</div>
+                  <div *ngIf="f.lot.errors.minlength">Number of numbers/characters must be greater than 3</div>
+                  <div *ngIf="f.lot.errors.maxlength">Number of characters must be less than 200</div>
+                  <div *ngIf="f.lot.errors.cannotContainSpace">Cannot Contain Space</div>
+              </div>
+              </div>
+            <br>
+            <div class="form-Group">
+                Date of Vaccination:
+                <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="dd/mm/yyyy" formControlName="date" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+                <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                  <div *ngIf="f.date.errors.required">Date of Vaccination is required</div>
+                  <div *ngIf="f.date.errors.pattern">Please enter it as dd/mm/yyyy.</div>
+              </div>
+              </div>
+              <br>
+            <button [disabled]="loading" class="btn btn-dark btn-outline-light">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Update
+            </button>
+          </form>
+      </div>
+    </div>
+  </div>
