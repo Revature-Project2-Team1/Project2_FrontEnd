@@ -8,7 +8,7 @@ import { first } from 'rxjs/operators';
 import {UpdatePatientService} from '../services/PatientService/update-patient.service';
 import { AlertService } from '../services/AlertService/alert.service';
 import {NoWhiteSpaceValidator} from '../Validators/no-whitespace';
-
+import {DateValidator} from '../Validators/Date';
 
 @Component({
   selector: 'app-update-patient',
@@ -28,11 +28,12 @@ export class UpdatePatientComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {// used to  create the form to eventually post
     this.form = this.formBuilder.group({
-      SSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      SSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), NoWhiteSpaceValidator.cannotContainSpace]],
       lot:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), NoWhiteSpaceValidator.cannotContainSpace]],
-      date: ['', [Validators.required, Validators.pattern('')]]
+      date: ['', [Validators.required, DateValidator.ptDate]],
+      VaccineType:['',Validators.required]
   });
   }
 
@@ -55,8 +56,8 @@ export class UpdatePatientComponent implements OnInit {
         .pipe(first())
         .subscribe({
             next: () => {
-                this.alertService.success('Registration successful', { keepAfterRouteChange: true });
-                this.router.navigate(['../login'], { relativeTo: this.route });
+                this.alertService.success('Update successful', { keepAfterRouteChange: true });
+                this.router.navigate([''], { relativeTo: this.route });//This will reroute to the customer dashboard.
             },
             error: error => {
                 this.alertService.error(error);
