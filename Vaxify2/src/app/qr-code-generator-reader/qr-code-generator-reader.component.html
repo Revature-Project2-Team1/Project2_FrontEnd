@@ -12,52 +12,24 @@
   [errorCorrectionLevel]="correctionLevel"
   [value]="value"
   cssClass="aclass"
-
-  
   ></ngx-qrcode>
 
-  <textarea [(ngModel)] = "value"></textarea>
-
-  <circle-progress
-  [(ngModel)]=duration
-  [(ngModel)]=percent
-  [(ngModel)]=percent_e
-
-  [percent]="percent"
-  [radius]="50"
-  [outerStrokeWidth]="7"
-  [innerStrokeWidth]="0"
-  [outerStrokeColor]='formatColor(formatTitle(percent_e))'
-  [innerStrokeColor]="'#ffffff'"
-  [showTitle]="true"
-  [showSubtitle]="false"
-  [title]='formatTitle(percent_e)'
-  [titleColor]='formatColor(formatTitle(percent_e))'
-  [units] = "'s'"
-  [animation]="true"
-  [animationDuration]="duration"
-  [hidden]="inboundClick"
-  
-></circle-progress>
-
-<div class="rows">
-  <div class="a-bunch-of-styles-for-my-button">
-      <button class="more-styles"  (click)="generateQR()"  [routerLink]="['/qr-generator-reader']" href="#">Test</button>
-  </div>
-</div>
-
+  <textarea [hidden]="true" [(ngModel)] = "value"></textarea>
+  <input 
+  hidden 
+  type="file" 
+  #uploader
+  (change)="uploadFile($event)"
+/>
       <div class="card-body">
-        <h5 class="card-title">Generate your QR Code for others to verify. 
-            <br><br> 
-            Upload another person's QR Code to be scanned</h5><br>
-
-            <small>The QR code will contain the vaccination status <br> of the person it belongs to</small>
+        <h5 class="card-title">Generate your QR Code or Verify someone elses.</h5>
+        <small>Generated QR Codes Expire after 1 minute</small>
         
         <form>
             <br>
           <button class="btn btn-dark btn-outline-light" type="button" (click)="generateQR()">Generate QR Code</button>
           <br><br>
-          <button class="btn btn-dark btn-outline-light" type="button" (click)="verifyQR()">Upload a QR to Scan</button>
+          <button class="btn btn-dark btn-outline-light" type="button" (click)="uploader.click()">Upload a QR to Verify</button>
           <br>
         </form>
       </div>
