@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="card ">
+    <div class="card-header">
+      <img src='../../assets/project2.png' width="200" height="200">
+    <br>
+    <br>
+      Register Patient
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Enter<br> Credentials:</h5>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input style="align-content:center; margin: 0 auto; width:100%; " type="text" formControlName="email" placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class ="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Please enter email.</div>
+            <div *ngIf="f.email.errors.email">Invalid Email</div>
+          </div>
+          </div>
+          <br>
+          <br>
+          <div class="form-Group">
+            <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="username" formControlName="username" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+              <div *ngIf="f.username.errors.minlength">Must be 3 characters or more</div>
+              <div *ngIf="f.username.errors.maxlength">Must be less than 20 characters</div>
+          </div>
+          </div>
+          <div class="form-Group">
+            <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="password" formControlName="password" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be more than 8 characters long</div>
+              <div *ngIf="f.password.errors.maxlength">Must be less than 200 characters</div>
+          </div>
+          </div>
+          <div class="form-Group">
+            <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="customerSSN" formControlName="customerSSN" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.customerSSN.errors }">
+            <div *ngIf="submitted && f.customerSSN.errors" class="invalid-feedback">
+              <div *ngIf="f.customerSSN.errors.required">SSN is required</div>
+              <div *ngIf="f.customerSSN.errors.minlength">Must be exactly 9 digits</div>
+              <div *ngIf="f.customerSSN.errors.maxlength">Must be exactly 9 digits</div>
+          </div>
+          </div>
+          <br>
+          <br>
+          <button [disabled]="loading" class="btn btn-dark btn-outline-light">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+          </button>
+        </form>
+    </div>
+  </div>
+</div>
+
+    <br>
+    <br>
+    <br>
