@@ -17,7 +17,6 @@
           </div>
           </div>
           <br>
-          <br>
           <div class="form-Group">
             <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="username" formControlName="username" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.username.errors }">
             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -26,6 +25,7 @@
               <div *ngIf="f.username.errors.maxlength">Must be less than 20 characters</div>
           </div>
           </div>
+          <br>
           <div class="form-Group">
             <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="password" formControlName="password" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.password.errors }">
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -34,6 +34,7 @@
               <div *ngIf="f.password.errors.maxlength">Must be less than 200 characters</div>
           </div>
           </div>
+          <br>
           <div class="form-Group">
             <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="customerSSN" formControlName="customerSSN" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.customerSSN.errors }">
             <div *ngIf="submitted && f.customerSSN.errors" class="invalid-feedback">

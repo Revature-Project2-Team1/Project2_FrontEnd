@@ -19,6 +19,9 @@ import { ProviderDashboardComponent } from './provider-dashboard/provider-dashbo
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
 
+//import qr
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +53,9 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
       
-    })
+    }),
+    NgxQRCodeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
