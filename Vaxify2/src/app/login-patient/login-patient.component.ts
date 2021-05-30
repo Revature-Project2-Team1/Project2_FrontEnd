@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NavbarService } from '../services/NavBarService/navbar.service';
 
 @Component({
@@ -12,10 +12,17 @@ export class LoginPatientComponent implements OnInit {
   isLoggedIn = false;
   role = '';
 
-  constructor(private navbarService: NavbarService) {
+  constructor(
+    private navbarService: NavbarService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) {
     //this.navbarService.getLoginStatus().subscribe(status => this.isLoggedIn = status);
   }
 
   ngOnInit(): void {
+  }
+  changeEmail(){
+  this.router.navigate(['../changeUsername'], { relativeTo: this.route });
   }
 }
