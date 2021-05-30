@@ -20,7 +20,9 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
 
 //import qr
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { ChangeEmailComponent } from './change-email/change-email.component';
+
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { ChangeEmailComponent } from './change-email/change-email.component';
     AppComponent,
     HomeComponent,
     LoginProviderComponent,
+    LoginPatientComponent,
     RegisterPatientComponent,
     AlertComponent,
     QrCodeGeneratorReaderComponent,
