@@ -36,6 +36,7 @@ export class ChangeEmailComponent implements OnInit {
   get f(){
     return this.form.controls;
   }
+
   onSubmit() {
     this.submitted = true;
 
@@ -53,7 +54,7 @@ export class ChangeEmailComponent implements OnInit {
         .subscribe({
             next: () => {
                 this.alertService.success('Registration successful', { keepAfterRouteChange: true });
-                this.router.navigate(['../login'], { relativeTo: this.route });
+                this.router.navigate(['../providerDashboard'], { relativeTo: this.route });
             },
             error: error => {
                 this.alertService.error(error);
