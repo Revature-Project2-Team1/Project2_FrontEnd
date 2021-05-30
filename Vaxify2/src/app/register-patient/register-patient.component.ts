@@ -54,7 +54,6 @@ export class RegisterPatientComponent implements OnInit {
     console.log(this.form.value);
     this.loading = true;
     this.registerService.register(this.form.value)
-
         .pipe(first())
         .subscribe({
             next: () => {

@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card ">
+        <div class="card-header">
+            <img src='../../assets/project2.png' width="200" height="200">
+            <br>
+            <br>
+            Login as Provider
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Enter<br> Credentials:</h5>
+
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input class="form-control" id="username" [(ngModel)]="user.username"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                        style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="Username"
+                        formControlName="username">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <input class="form-control" id="SSN" [(ngModel)]="user.SSN"
+                        [ngClass]="{ 'is-invalid': submitted && f.SSN.errors }"
+                        style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="SSN"
+                        formControlName="SSN">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.SSN.errors.required">SSN is required</div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <button class="btn btn-dark btn-outline-light">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

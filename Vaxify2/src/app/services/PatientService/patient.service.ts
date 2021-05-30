@@ -8,18 +8,18 @@ import { Patient } from 'src/app/models/patient';
   providedIn: 'root'
 })
 export class PatientService {
-  private urlSearch: string;
+  private urlQR: string;
   constructor(private http: HttpClient) {
-    this.urlSearch = "http://localhost:9000/patient/"
+    this.urlQR = "http://localhost:9000/qr/find-patient/"
   }
 
-  public generateQR(patient_id):Observable<any> {
+  public generateQR(patient_ssn):Observable<Patient> {
 
-    return this.http.get<any>(this.urlSearch+patient_id);
+    return this.http.get<any>(this.urlQR+patient_ssn);
   }
 
   public verifyQR(qr_id,patient_id):Observable<any> {
 
-    return this.http.get<any>(this.urlSearch+patient_id +"/"+qr_id);
+    return this.http.get<any>(this.urlQR+patient_id +"/"+qr_id);
   }
 }

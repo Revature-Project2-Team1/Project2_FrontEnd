@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChangeEmailComponent } from './change-email/change-email.component';
 import { HomeComponent } from './home/home.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
 import { LoginProviderComponent } from './login-provider/login-provider.component';
@@ -18,8 +19,8 @@ const routes: Routes = [
 {path: 'qr-generator-reader', component:QrCodeGeneratorReaderComponent},
 {path:'patient-dashboard',component:PatientDashboardComponent},
 {path:'provider-dashobard', component:ProviderDashboardComponent},
-{path:'patientUpdate', component:UpdatePatientComponent}
-
+{path:'patientUpdate', component:UpdatePatientComponent},
+{path: 'changeUsername', component: ChangeEmailComponent}
 
 
 

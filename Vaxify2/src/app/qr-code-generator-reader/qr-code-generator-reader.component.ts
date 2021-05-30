@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { Router } from '@angular/router';
+import { Patient } from '../models/patient';
+import { PatientService } from '../services/PatientService/patient.service';
+import jsQR from "jsqr";
+
 
 @Component({
   selector: 'app-qr-code-generator-reader',
@@ -10,67 +14,72 @@ import { Router } from '@angular/router';
 export class QrCodeGeneratorReaderComponent implements OnInit {
   elementType: NgxQrcodeElementTypes;
   correctionLevel: NgxQrcodeErrorCorrectionLevels;
-  value: string;
   percent:number;
   percent_e: number;
+  duration:number;
+  
+  value="";
+  animation=true;
+  color=""
+  status=false;
+  inboundClick=true;
+  
+  current_user="2"; //ssn
 
-  constructor() { }
+  pass:HTMLAudioElement= new Audio("../../assets/pass.mp3");
+  fail:HTMLAudioElement=new Audio("../../assets/fail.mp3");
+  
+ 
 
-  ngOnInit(): void {
+ private patient: Patient;
+  patient_status: string;
+  constructor(private service: PatientService) { 
+
   }
+
+
 
   verifyQR(): void{
 
   }
+  uploadFile($event) {
+    console.log($event.target.files[0]); // outputs the first file
+}
 
   generateQR(): void{
+    this.inboundClick = false;
+    
+    
+    this.service.generateQR(this.current_user).subscribe(res => {
+      this.patient=res;
+      console.log(this.patient);
+      console.log("test")
+      this.patient_status=this.patient.status;
+
+
+  })
 
     
-    this.inboundClick = false;
-
+  this.fail.load();
+  this.fail.volume=1;
+    this.fail.play();
+    this.animation=!this.animation;
+   
     this.elementType = NgxQrcodeElementTypes.URL;
     this.correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-    this.value="THIS IS WHAT WILL BE IN THE QR CODE. IDEALLY JSON. PLAY AROUND WITH THIS TO SEE QR CHANGE";
-    this.percent=100;
-    this.percent_e=1;
-
-    function sayHi() {
-      this.percent_e=100;
-    }
-    function reset(){
-
-    }
-    setTimeout(sayHi, 6000);
-
+    this.value=this.patient_status;
+    function runC() {
     
-  }
-
-  formatTitle = (percent) : string => {
-    if(percent >= 100){
-      return "EXPIRED"
-    }else if(percent > 0){
-      return "Valid"
-    }else {
-      return "N/A"
+      
     }
-  }
-
-  formatColor = (status: string) : string => {
-    if(status=="EXPIRED"){
-      return "#FF0000"
-    }else if(status=="Valid"){
-      return "#FFFFFF"
-    }else {
-      return "#FFFFFF"
-    }
-  }
-
-  duration:number=6000;
   
+    setTimeout(runC, 6000); 
+  }
 
+  ngOnInit(): void {
+   
 
-  inboundClick = true;
-
+  }
 
   
 }
