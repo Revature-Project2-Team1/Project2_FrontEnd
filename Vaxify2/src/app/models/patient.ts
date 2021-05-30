@@ -2,10 +2,10 @@ import { Address } from "./address";
 import { VaccineRecord } from "./vaccine-record";
 
 export class Patient {
-   ssn:String;
-   dob:String;
-   fullName:String;
-   status:String;
+   ssn:string;
+   dob:string;
+   fullName:string;
+   status:string;
    address:Address;
    vaccineRecordList: VaccineRecord[];
      
