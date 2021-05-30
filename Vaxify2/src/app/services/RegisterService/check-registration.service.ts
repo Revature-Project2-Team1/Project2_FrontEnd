@@ -15,6 +15,6 @@ export class CheckRegistrationService {
   constructor(private router: Router, private http: HttpClient) {}
 
   CheckRegistration(patientCreds: PatientCreds) {
-    return this.http.get(`${environment.apiUrl}/patient/patientCreds`);//insert post method here
+    return this.http.get(`${environment.apiUrl}/patient/patientCreds`);//insert get method here
 }
 }

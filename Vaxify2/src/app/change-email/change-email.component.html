@@ -33,8 +33,9 @@
                 </div>
                 <br>
                 <br>
-                <button class="btn btn-dark btn-outline-light">
-                    Login
+                <button [disabled]="loading" class="btn btn-dark btn-outline-light">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Get Email
                 </button>
             </form>
         </div>

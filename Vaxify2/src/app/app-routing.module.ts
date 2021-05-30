@@ -17,9 +17,9 @@ const routes: Routes = [
 {path: 'loginProvider', component:LoginProviderComponent},
 {path: 'registerPatient', component:RegisterPatientComponent},
 {path: 'qr-generator-reader', component:QrCodeGeneratorReaderComponent},
-{path:'patient-dashboard',component:PatientDashboardComponent},
-{path:'provider-dashobard', component:ProviderDashboardComponent},
-{path:'patientUpdate', component:UpdatePatientComponent},
+{path: 'patientDashboard',component:PatientDashboardComponent},
+{path: 'providerDashobard', component:ProviderDashboardComponent},
+{path: 'patientUpdate', component:UpdatePatientComponent},
 {path: 'changeUsername', component: ChangeEmailComponent}
 
 
