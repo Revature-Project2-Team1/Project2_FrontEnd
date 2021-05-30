@@ -21,12 +21,14 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
 
 //import qr
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { LoginPatientComponent } from './login-patient/login-patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginProviderComponent,
+    LoginPatientComponent,
     RegisterPatientComponent,
     AlertComponent,
     QrCodeGeneratorReaderComponent,
