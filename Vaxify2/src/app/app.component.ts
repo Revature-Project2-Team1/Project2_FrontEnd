@@ -6,6 +6,7 @@ import { LoginProviderComponent } from './login-provider/login-provider.componen
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { NavbarService } from './services/NavBarService/navbar.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
