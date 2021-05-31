@@ -1,12 +1,13 @@
 <div class="container">
   <div class="card ">
     <div class="card-header"><br>
-        <img [hidden]="!inboundClick" src='../../assets/project2.1.png' width="250" height="250">
+        <img [hidden]="!inboundClick" src='../../assets/project2.2.png' width="250" height="250">
         <ngx-qrcode *ngIf="!inboundClick && !s_mode" [elementType]="elementType" [errorCorrectionLevel]="correctionLevel"
           [value]="value" cssClass="aclass" [width]="250"></ngx-qrcode>
           <img *ngIf="!inboundClick && s_mode" src='../../assets/{{pic_name2}}.png' width="250" height="250">
 
         <textarea [hidden]="true" id="x1" [(ngModel)]="value"></textarea>
+        
         
 
         <input hidden type="file" #uploader (change)="uploadFile($event)"/>
@@ -25,11 +26,11 @@
         
 
           <div [hidden]="!inboundClick" class="status_img">
-          <img  src='../../assets/{{pic_name}}.png' width="50" height="50"><br>
+          <img  src='../../assets/{{pic_name}}.png' width="50" height="50" alt=""><br>
           </div>
 
           <div [hidden]="inboundClick">
-            <img  src='../../assets/{{pic_name}}.png' width="50" height="50"><br>
+            <img  src='../../assets/{{pic_name}}.png' width="50" height="50" alt=""><br>
             </div>
 
           <form>
