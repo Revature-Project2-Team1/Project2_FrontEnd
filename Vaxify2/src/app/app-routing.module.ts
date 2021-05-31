@@ -19,14 +19,12 @@ const routes: Routes = [
 {path: 'loginProvider', component:LoginProviderComponent},
 {path: 'registerPatient', component:RegisterPatientComponent},
 {path: 'qr-generator-reader', component:QrCodeGeneratorReaderComponent},
-{path: 'patientDashboard',component:PatientDashboardComponent},
-{path: 'providerDashobard', component:ProviderDashboardComponent},
+{path: 'patient-dashboard',component:PatientDashboardComponent},
+{path: 'provider-dashboard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
 {path: 'changeUsername', component: ChangeEmailComponent},
 {path: 'updatePasswordCheck', component: UpdatePasswordCheckComponent},
 {path: 'updatePassword', component: UpdatePasswordComponent}
-
-
 
 ];
 
