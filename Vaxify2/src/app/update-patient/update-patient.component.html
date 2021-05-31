@@ -4,30 +4,30 @@
         <img src='../../assets/project2.png' width="200" height="200">
       <br>
       <br>
-        Register Patient
+        Update Patient
       </div>
       <div class="card-body">
         <h5 class="card-title">Enter<br> Credentials:</h5>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-Group">
-              <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="SSN" formControlName="SSN" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.SSN.errors }">
-              <div *ngIf="submitted && f.SSN.errors" class="invalid-feedback">
-                <div *ngIf="f.SSN.errors.required">SSN is required</div>
-                <div *ngIf="f.SSN.errors.minlength">Must be exactly 9 digits</div>
-                <div *ngIf="f.SSN.errors.maxlength">Must be exactly 9 digits</div>
-                <div *ngIf="f.SSN.errors.cannotContainSpace">Cannot Contain Space</div>
+              <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="SSN xxx-xx-xxxx" formControlName="ssn" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.ssn.errors }">
+              <div *ngIf="submitted && f.ssn.errors" class="invalid-feedback">
+                <div *ngIf="f.ssn.errors.required">SSN is required</div>
+                <div *ngIf="f.ssn.errors.cannotContainSpace">Cannot Contain Space</div>
+                <div *ngIf="f.ssn.errors.pattern">Must follow xxx-xx-xxxx format</div>
             </div>
+            <div ><output style ="color:rgb(196, 38, 38); font-size: small;">{{message}}</output></div>
             </div>
             <br>
             <div class="form-Group">
-                <label for="VaccineType">Vaccine Type:</label>
-                <select name="VaccineType"  formControlName="VaccineType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VaccineType.errors }">
+                <label for="vaccineType">Vaccine Type:</label>
+                <select name="vaccineType"  formControlName="vaccineType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.vaccineType.errors }">
                   <option value="Moderna">Moderna</option>
                   <option value="Pfizer">Pfizer</option>
                   <option value="Johnson&Johnson">Johnson&Johnson</option>
                 </select>
-                <div *ngIf="submitted && f.VaccineType.errors" class="invalid-feedback">  
-                <div *ngIf="f.VaccineType.errors.required">Vaccine Type is required</div>
+                <div *ngIf="submitted && f.vaccineType.errors" class="invalid-feedback">  
+                <div *ngIf="f.vaccineType.errors.required">Vaccine Type is required</div>
               </div> 
             </div>
             <br>
@@ -44,10 +44,10 @@
             <br>
             <div class="form-Group">
                 Date of Vaccination:
-                <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="dd/mm/yyyy" formControlName="date" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+                <input style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="mm-dd-yyyy" formControlName="date" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.date.errors }">
                 <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
                   <div *ngIf="f.date.errors.required">Date of Vaccination is required</div>
-                  <div *ngIf="f.date.errors.ptDate">Please enter it as dd/mm/yyyy.</div>
+                  <div *ngIf="f.date.errors.ptDate">Please enter/re-enter it as mm-dd-yyyy.</div>
               </div>
               </div>
               <br>

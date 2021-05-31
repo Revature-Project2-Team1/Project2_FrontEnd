@@ -3,12 +3,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
-
+import {DatePipe} from '@angular/common';
 
 import {UpdatePatientService} from '../services/PatientService/update-patient.service';
 import { AlertService } from '../services/AlertService/alert.service';
 import {NoWhiteSpaceValidator} from '../Validators/no-whitespace';
 import {DateValidator} from '../Validators/Date';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import {InvalidSSNValidator} from '../Validators/InvalidSSN';
 
 @Component({
   selector: 'app-update-patient',
@@ -19,28 +22,30 @@ export class UpdatePatientComponent implements OnInit {
   form: FormGroup;
   loading = false;
   submitted = false;
-  
+  message = "";
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private updatePatientService: UpdatePatientService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {// used to  create the form to eventually post
     this.form = this.formBuilder.group({
-      SSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), NoWhiteSpaceValidator.cannotContainSpace]],
+      ssn: ['', [Validators.required,  NoWhiteSpaceValidator.cannotContainSpace,Validators.pattern('^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$')]],
       lot:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), NoWhiteSpaceValidator.cannotContainSpace]],
       date: ['', [Validators.required, DateValidator.ptDate]],
-      VaccineType:['',Validators.required]
+      vaccineType:['',Validators.required]
   });
   }
 
   get f() { return this.form.controls; } //used to get form fields
-
+    
   onSubmit() {
     this.submitted = true;
+    
 
     // reset alerts on submit
     this.alertService.clear();
@@ -49,18 +54,23 @@ export class UpdatePatientComponent implements OnInit {
     if (this.form.invalid) {
         return;
     }
-    console.log(this.form.value);
+
+    this.form.patchValue({
+
+      date: this.datePipe.transform(new Date(this.form.controls['date'].value),"yyyy-MM-dd")
+    })
     this.loading = true;
     this.updatePatientService.update(this.form.value)
-
+    
         .pipe(first())
         .subscribe({
             next: () => {
                 this.alertService.success('Update successful', { keepAfterRouteChange: true });
-                this.router.navigate([''], { relativeTo: this.route });//This will reroute to the customer dashboard.
+                this.router.navigate(['/updatePatient'], { relativeTo: this.route });//This will reroute to the customer dashboard.
             },
             error: error => {
-                this.alertService.error(error);
+                this.alertService.error(error.error.text);
+                this.message= error.error.text;
                 this.loading = false;
             }
         });
