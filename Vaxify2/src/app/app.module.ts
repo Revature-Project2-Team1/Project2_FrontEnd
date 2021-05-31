@@ -22,6 +22,7 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { ChangeEmailComponent } from './change-email/change-email.component';
+import { ViewStatusComponent } from './view-status/view-status.component';
 import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 
@@ -40,6 +41,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     PatientDashboardComponent,
     UpdatePatientComponent,
     ChangeEmailComponent,
+    ViewStatusComponent,
     UpdatePasswordCheckComponent,
     UpdatePasswordComponent,
   ],

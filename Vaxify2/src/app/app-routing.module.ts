@@ -11,7 +11,7 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
 import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
-
+import { ViewStatusComponent} from './view-status/view-status.component';
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 {path: 'home', component:HomeComponent},
@@ -23,10 +23,9 @@ const routes: Routes = [
 {path: 'provider-dashboard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
 {path: 'changeUsername', component: ChangeEmailComponent},
+{path: 'viewStatus', component: ViewStatusComponent}
 {path: 'updatePasswordCheck', component: UpdatePasswordCheckComponent},
 {path: 'updatePassword', component: UpdatePasswordComponent}
-
-];
 
 
 
