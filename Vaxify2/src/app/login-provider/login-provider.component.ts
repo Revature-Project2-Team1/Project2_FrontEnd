@@ -63,7 +63,7 @@ export class LoginProviderComponent implements OnInit {
           let name = res;
           if (name.username == this.user.username) {
             alert('Successfully logged in');
-            this.router.navigate(['../ProviderDashboardComponent'], {
+            this.router.navigate(['../provider-dashboard'], {
               relativeTo: this.route,
             });
           }
