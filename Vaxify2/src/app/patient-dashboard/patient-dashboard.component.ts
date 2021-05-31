@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-dashboard.component.css']
 })
 export class PatientDashboardComponent implements OnInit {
-
+  ssn:string;
   constructor() { }
 
   ngOnInit(): void {
+    this.ssn=sessionStorage.getItem('patient');
+
   }
 
 }

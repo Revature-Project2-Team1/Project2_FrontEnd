@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Patient } from '../models/patient';
 import { PatientService } from '../services/PatientService/patient.service';
 import QrcodeDecoder from 'qrcode-decoder';
+import { timestamp } from 'rxjs/operators';
+import { QRrecord } from '../models/qrrecord';
 
 
 @Component({
@@ -20,13 +22,15 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   
   value="";
   upload_value:string;
-  animation=true;
-  color=""
+  scan_name:string;
+
+
+
   status=false;
   inboundClick=true;
   s_mode=true;
   
-  current_user="2"; //ssn
+  current_user="3"; //ssn
   scan_mode:string;
   pic_name="pending_status";
   pic_name2="";
@@ -48,15 +52,37 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   private patient: Patient;
   patient_status: string;
   val: string | ArrayBuffer;
-  constructor(private service: PatientService) { 
 
+  private qr_record:QRrecord;
+  private n_patient: Patient;
+
+  constructor(private service: PatientService) { 
+    this.qr_record=new QRrecord();
+    this.n_patient=new Patient();
   }
 
 
 
-  verifyQR(): void{
+  checkQR(): void{
     
 
+  }
+
+  addQR(): void{
+
+    this.service.addQR(this.qr_record).subscribe(res=>{
+      this.qr_record=new QRrecord();
+
+    })
+
+  }
+
+  deleteQR(): void{
+
+    this.service.deleteQR(this.current_user).subscribe(res => {
+
+    })
+    
   }
 
   playPass(): void{
@@ -105,18 +131,25 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
 
   generateQR(): void{
     this.scan_mode="Self Value";
-
     this.elementType = NgxQrcodeElementTypes.URL;
     this.correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
     this.service.generateQR(this.current_user).subscribe(res => {
       this.patient=res;
-      
       this.patient_status=this.patient.status;
-      this.value=this.patient.status;
       this.upload_value=this.patient_status;
+      this.n_patient.ssn=this.patient.ssn;
+
+      this.qr_record.patient=this.n_patient;
+      this.qr_record.time_stamp=Date.now();
+
+      this.value=this.patient.status +'\n' + this.patient.fullName +'\n'+this.qr_record.time_stamp;
+
+      this.addQR();
+
       this.inboundClick = false; 
       this.s_mode=false;
+      this.scan_mode=this.patient.fullName;
       if(this.upload_value=="vaccinated"|| this.upload_value=="Fully Vaccinated"){
         
         this.pic_name="verified_status"
