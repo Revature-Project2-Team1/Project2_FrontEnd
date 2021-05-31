@@ -25,14 +25,22 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   color=""
   status=false;
   inboundClick=true;
+  s_mode=true;
   
   current_user="2"; //ssn
+  scan_mode:string;
+  pic_name="pending_status";
+  pic_name2="";
+
 
   pass:HTMLAudioElement= new Audio("../../assets/pass.mp3");
   fail:HTMLAudioElement=new Audio("../../assets/fail.mp3");
+  click1:HTMLAudioElement= new Audio("../../assets/click1.mp3");
+  click2:HTMLAudioElement= new Audio("../../assets/click2.mp3");
   
   imageData:ImageData;
   code:any;
+  reset= new Blob();
   
   reader = new FileReader();
   pic= new Image();
@@ -50,29 +58,51 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   verifyQR(): void{
     
 
-     this.code = jsQR(this.imageData.data, 250,250);
+  }
+
+  playPass(): void{
+    this.pass.load();
+    this.pass.volume=1;
+    this.pass.play();   
+    this.pic_name="verified_status"
+    this.pic_name2="pass"
+
+
+  }
+
+  playFail(): void{
+
+  this.fail.load();
+  this.fail.volume=1;
+  this.fail.play();   
+  this.pic_name="denied_status"
+  this.pic_name2="fail"
+
 
   }
   
   uploadFile($event) { //also decodes QR
+    this.scan_mode="Scanned Value"
     this.reader.readAsDataURL($event.target.files[0]);
     this.reader.onload = (_event) => {  
       this.qr.decodeFromImage(this.reader.result)
       .then(res=> {
+        console.log(res)
         console.log(res.data)
         this.upload_value=res.data
-        if(this.upload_value=="Vaccinated"){
-            this.pass.load();
-            this.pass.volume=1;
-            this.pass.play();   
-            alert("Vaccinated!")
+        this.inboundClick = false; 
+      this.s_mode=true;
+        if(this.upload_value=="vaccinated"|| this.upload_value=="Fully Vaccinated"){
+            
+
+            this.playPass();
+
         }
         else{
-          this.fail.load();
-          this.fail.volume=1;
-          this.fail.play();   
-          alert("Not Vaccinated!")
+          this.playFail();
+
         }
+        this.reader.readAsText(this.reset);
       });
         
     } 
@@ -80,36 +110,42 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
 }
 
   generateQR(): void{
-    this.inboundClick = false;
-    
+    this.scan_mode="Self Value";
 
-    
-    this.fail.load();
-    this.fail.volume=1;
-    this.fail.play();   
-    
-    
-   
-  }
-
-  ngOnInit(): void {
     this.elementType = NgxQrcodeElementTypes.URL;
     this.correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
     this.service.generateQR(this.current_user).subscribe(res => {
       this.patient=res;
-      console.log(this.patient);
-      console.log("test")
+      
       this.patient_status=this.patient.status;
       this.value=this.patient_status;
+      this.upload_value=this.patient_status;
+      this.inboundClick = false; 
+      this.s_mode=false;
+      if(this.upload_value=="vaccinated"|| this.upload_value=="Fully Vaccinated"){
+        
+        this.pic_name="verified_status"
 
+    }
+    else{
+      
+      this.pic_name="denied_status"
 
+    }
   })
 
+    this.click2.load();
+    this.click2.volume=1;
+    this.click2.play(); 
   }
 
-  
-
+  ngOnInit(): void {
+ 
+    this.click1.load();
+    this.click1.volume=1;
+    this.click1.play(); 
+  }
   
 }
 

@@ -2,20 +2,37 @@
   <div class="card ">
     <div class="card-header"><br>
         <img [hidden]="!inboundClick" src='../../assets/project2.1.png' width="250" height="250">
-        <ngx-qrcode [hidden]="inboundClick" [elementType]="elementType" [errorCorrectionLevel]="correctionLevel"
+        <ngx-qrcode *ngIf="!inboundClick && !s_mode" [elementType]="elementType" [errorCorrectionLevel]="correctionLevel"
           [value]="value" cssClass="aclass" [width]="250"></ngx-qrcode>
-        <textarea [hidden]="true" [(ngModel)]="value"></textarea>
+          <img *ngIf="!inboundClick && s_mode" src='../../assets/{{pic_name2}}.png' width="250" height="250">
+
+        <textarea [hidden]="true" id="x1" [(ngModel)]="value"></textarea>
         
 
-        <input hidden type="file" #uploader (change)="uploadFile($event)" />
+        <input hidden type="file" #uploader (change)="uploadFile($event)"/>
       </div>
 
         <div class="card-body">
           <h5 class="card-title">Generate your QR Code or Verify someone elses.</h5>
-          <small>Generated QR Codes Expire after 1 minute</small>
+          <small>Generated QR Codes Expire after 1 minute</small><br>
+          <div class="result1">
+          <output class="bordered2">{{scan_mode}}</output><br>
+          </div>
+          
+          <div class="result2">
+          <output class="bordered">{{upload_value}}</output><br>
+        </div>
+        
+
+          <div [hidden]="!inboundClick" class="status_img">
+          <img  src='../../assets/{{pic_name}}.png' width="50" height="50"><br>
+          </div>
+
+          <div [hidden]="inboundClick">
+            <img  src='../../assets/{{pic_name}}.png' width="50" height="50"><br>
+            </div>
 
           <form>
-            <br>
             <button class="btn btn-dark btn-outline-light" type="button" (click)="generateQR()">Generate QR
               Code</button>
             <br><br>
