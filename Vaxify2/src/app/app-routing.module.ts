@@ -9,7 +9,7 @@ import { ProviderDashboardComponent } from './provider-dashboard/provider-dashbo
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
-
+import { ViewStatusComponent} from './view-status/view-status.component';
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 {path: 'home', component:HomeComponent},
@@ -20,7 +20,8 @@ const routes: Routes = [
 {path: 'patientDashboard',component:PatientDashboardComponent},
 {path: 'providerDashobard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
-{path: 'changeUsername', component: ChangeEmailComponent}
+{path: 'changeUsername', component: ChangeEmailComponent},
+{path: 'viewStatus', component: ViewStatusComponent}
 
 
 

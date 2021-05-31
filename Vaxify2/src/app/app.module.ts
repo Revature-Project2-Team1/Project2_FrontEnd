@@ -22,6 +22,7 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { ChangeEmailComponent } from './change-email/change-email.component';
+import { ViewStatusComponent } from './view-status/view-status.component';
 
 
 
@@ -38,6 +39,7 @@ import { ChangeEmailComponent } from './change-email/change-email.component';
     PatientDashboardComponent,
     UpdatePatientComponent,
     ChangeEmailComponent,
+    ViewStatusComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,9 +9,7 @@ import {UpdatePatientService} from '../services/PatientService/update-patient.se
 import { AlertService } from '../services/AlertService/alert.service';
 import {NoWhiteSpaceValidator} from '../Validators/no-whitespace';
 import {DateValidator} from '../Validators/Date';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import {InvalidSSNValidator} from '../Validators/InvalidSSN';
+
 
 @Component({
   selector: 'app-update-patient',
