@@ -17,6 +17,6 @@ export class UpdatePatientService {
   constructor(private router: Router, private http: HttpClient) {}
 
   update(vaccineRecords:VaccineRecord){
-    return this.http.put(`${environment.apiUrl}/provider/vaxRecords`, vaccineRecords)
+    return this.http.put(`${environment.apiURL}/provider/vaxRecords`, vaccineRecords)
   }
 }
