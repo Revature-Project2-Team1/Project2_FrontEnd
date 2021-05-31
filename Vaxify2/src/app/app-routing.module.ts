@@ -20,9 +20,7 @@ const routes: Routes = [
 {path: 'patient-dashboard',component:PatientDashboardComponent},
 {path: 'provider-dashboard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
-{path: 'changeUsername', component: ChangeEmailComponent}
-
-
+{path: 'changeUsername', component: ChangeEmailComponent},
 
 ];
 
