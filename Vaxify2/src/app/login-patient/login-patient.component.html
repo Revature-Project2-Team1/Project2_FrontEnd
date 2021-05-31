@@ -9,32 +9,29 @@
     <div class="card-body">
       <h5 class="card-title">Enter<br> Credentials:</h5>
 
-
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="myForm" novalidate>
         <div class="form-group">
-          <input class="form-control" id="username" [(ngModel)]="user.username"
-            [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
-            style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="Username"
-            formControlName="username">
-          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-          </div>
+          <input class="form-control" id="username" [(ngModel)]="user.username" name ="username" [ngClass]="{ 'is-invalid': inboudClick && f.input.errors }"
+          style="align-content:center; margin: 0 auto; width:100%;" type="text" placeholder="Username or Email"
+          formControlName="input">
+          <div *ngIf="inboudClick && f.input.errors" class="invalid-feedback">
+            <div *ngIf="f.input.errors.required">Username or Email is required</div>
+            <div *ngIf="f.input.errors.cannotContainSpace">No space</div>
+        </div>
         </div>
         <br>
         <br>
         <div class="form-group">
-          <input class="form-control" id="password" [(ngModel)]="user.password"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-            style="align-content:center; margin: 0 auto; width:100%;" type="password" placeholder="Password"
-            formControlName="password">
-          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
+          <input class="form-control" id="password" [(ngModel)]="user.password" name ="password" [ngClass]="{ 'is-invalid': inboudClick && f.passwordValidator.errors}"
+            style="align-content:center; margin: 0 auto; width:100%;" type="password" placeholder="Password" formControlName="passwordValidator" >
+            <div *ngIf="inboudClick && f.passwordValidator.errors" class="invalid-feedback">
+              <div *ngIf="f.passwordValidator.errors.required">Password is required</div>
+              <div *ngIf="f.passwordValidator.errors.cannotContainSpace">No space</div>
           </div>
         </div>
         <br>
         <br>
-
-        <button class="btn btn-dark btn-outline-light" type="submit">
+        <button class="btn btn-dark btn-outline-light" type="button" (click)="validatePatientCreds()">
           <span class="spinner-border spinner-border-sm mr-1"></span>
           Login
         </button>

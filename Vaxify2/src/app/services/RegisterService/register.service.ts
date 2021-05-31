@@ -14,10 +14,13 @@ import { PatientCreds } from '../../models/patient-creds';
 })
 export class RegisterService {
 
-  constructor(private router: Router, private http: HttpClient) { }
+  private urlRegister:String;
 
-  register(patientCreds: PatientCreds) {
-    return this.http.post(`${environment.apiUrl}/patient/patientCreds`, patientCreds);//insert post method here
+  constructor(private http: HttpClient) {
+    this.urlRegister = "http://localhost:9000/patient/register/";
+   }
 
+   registerPatientCreds(email, username, password, ssn):Observable<any>{
+    return this.http.get<any>(this.urlRegister+email +"/"+username+"/"+password+"/"+ssn);
   }
 }

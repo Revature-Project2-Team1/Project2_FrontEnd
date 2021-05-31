@@ -37,7 +37,7 @@ export class ChangeEmailComponent implements OnInit {
     return this.form.controls;
   }
   onSubmit() {
-    this.submitted = true;
+    /* this.submitted = true;
 
     // reset alerts on submit
     this.alertService.clear();
@@ -59,6 +59,6 @@ export class ChangeEmailComponent implements OnInit {
                 this.alertService.error(error);
                 this.loading = false;
             }
-        });
+        }); */
     }
 }

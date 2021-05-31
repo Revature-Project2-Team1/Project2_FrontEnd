@@ -31,7 +31,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   
  
 
- private patient: Patient;
+  private patient: Patient;
   patient_status: string;
   constructor(private service: PatientService) { 
 
