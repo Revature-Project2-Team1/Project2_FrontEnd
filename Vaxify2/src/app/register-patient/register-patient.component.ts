@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 
 import {RegisterService} from '../services/RegisterService/register.service';
 import { AlertService } from '../services/AlertService/alert.service';
+import { PatientCreds } from '../models/patient-creds';
+import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
 
 
 @Component({
@@ -16,55 +17,65 @@ import { AlertService } from '../services/AlertService/alert.service';
   styleUrls: ['register-patient.component.css']
 })
 export class RegisterPatientComponent implements OnInit {
-  form: FormGroup;
-  loading = false;
-  submitted = false;
+  myForm: FormGroup;
+  user: PatientCreds;
+  status:boolean;
+  inboudClick = false;
 
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private registerService: RegisterService,
     private alertService: AlertService
-  ) { }
+  ) {
+    this.user = new PatientCreds();
+
+   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
+    this.createForm();
 
-      customerSSN: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      email: ['',[ Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(8),Validators.maxLength(200)]],
-      username:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
-
-  });
   }
-  get f() { return this.form.controls; } //used to get form fields
+
+  createForm(){
+    this.myForm = this.fb.group({
+      usernameValidator:['', [Validators.required, NoWhiteSpaceValidator.cannotContainSpace]],
+      emailValidator:['',[ Validators.required, Validators.email,NoWhiteSpaceValidator.cannotContainSpace]],
+      ssnValidator:['', [Validators.required, Validators.pattern('^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$'),NoWhiteSpaceValidator.cannotContainSpace]],
+      passwordValidator:['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),NoWhiteSpaceValidator.cannotContainSpace]],
+     });
+  }
+  get f() { return this.myForm.controls; } //used to get form fields
+
 
   onSubmit() {
-    this.submitted = true;
+}
 
-    // reset alerts on submit
-    this.alertService.clear();
-    
-    // stop here if form is invalid
-    if (this.form.invalid) {
-        return;
-    }
-    console.log(this.form.value);
-    this.loading = true;
-    this.registerService.register(this.form.value)
-        .pipe(first())
-        .subscribe({
-            next: () => {
-                this.alertService.success('Registration successful', { keepAfterRouteChange: true });
-                this.router.navigate(['../login'], { relativeTo: this.route });
-            },
-            error: error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        });
-    }
+registerPatientCreds(){
+  this.inboudClick= true;
+  this.alertService.clear();
 
+  if (this.myForm.invalid) {
+      return;
+  }
+
+  this.registerService
+        .registerPatientCreds(this.user.email, this.user.username, this.user.password, this.user.SSN)
+        .subscribe((res) => {
+          this.status = res;
+          if (this.status == true) {
+            alert('Congrats you sucessfully registered');
+            this.router.navigate(['../loginPatient'], {
+              relativeTo: this.route,
+            });
+          }
+        },
+          (error) => {
+            alert(error.error);
+          }
+        );
+
+}
 }

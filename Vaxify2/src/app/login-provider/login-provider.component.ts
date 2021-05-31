@@ -37,28 +37,6 @@ export class LoginProviderComponent implements OnInit {
     return this.form.controls;
   }
   onSubmit() {
-    this.submitted = true;
-
-    // reset alerts on submit
-    this.alertService.clear();
-
-    // stop here if form is invalid
-    if (this.form.invalid) {
-        return;
-    }
-
-    this.loading = true;
-    this.registerService.register(this.form.value)
-        .pipe(first())
-        .subscribe({
-            next: () => {
-                this.alertService.success('Registration successful', { keepAfterRouteChange: true });
-                this.router.navigate(['../login'], { relativeTo: this.route });
-            },
-            error: error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        });
-    }
+    
+  }
 }

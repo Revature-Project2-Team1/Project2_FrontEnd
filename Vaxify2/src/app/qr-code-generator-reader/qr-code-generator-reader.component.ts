@@ -46,7 +46,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   pic= new Image();
   qr= new QrcodeDecoder();
 
- private patient: Patient;
+  private patient: Patient;
   patient_status: string;
   val: string | ArrayBuffer;
   constructor(private service: PatientService) { 
