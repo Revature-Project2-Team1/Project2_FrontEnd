@@ -1,11 +1,16 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms';
-  
-export class passwordValidator {
-    static cannotContainSpace(control: AbstractControl) : ValidationErrors | null {
-        if((control.value as string).indexOf(' ') >= 0){
-            return {cannotContainSpace: true}
+import { FormGroup } from '@angular/forms';
+    
+export function ConfirmedValidator(controlName: string, matchingControlName: string){
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+        if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+            return;
         }
-  
-        return null;
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ confirmedValidator: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
     }
 }

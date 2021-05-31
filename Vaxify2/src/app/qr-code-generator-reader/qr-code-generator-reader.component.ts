@@ -3,7 +3,6 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
 import { Router } from '@angular/router';
 import { Patient } from '../models/patient';
 import { PatientService } from '../services/PatientService/patient.service';
-import jsQR from "jsqr";
 import QrcodeDecoder from 'qrcode-decoder';
 
 
@@ -66,8 +65,6 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
     this.pass.play();   
     this.pic_name="verified_status"
     this.pic_name2="pass"
-
-
   }
 
   playFail(): void{
@@ -84,6 +81,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   uploadFile($event) { //also decodes QR
     this.scan_mode="Scanned Value"
     this.reader.readAsDataURL($event.target.files[0]);
+    console.log($event.target.files[0]);
     this.reader.onload = (_event) => {  
       this.qr.decodeFromImage(this.reader.result)
       .then(res=> {
@@ -93,14 +91,10 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
         this.inboundClick = false; 
       this.s_mode=true;
         if(this.upload_value=="vaccinated"|| this.upload_value=="Fully Vaccinated"){
-            
-
             this.playPass();
-
         }
         else{
           this.playFail();
-
         }
         this.reader.readAsText(this.reset);
       });
@@ -119,7 +113,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
       this.patient=res;
       
       this.patient_status=this.patient.status;
-      this.value=this.patient_status;
+      this.value=this.patient.status;
       this.upload_value=this.patient_status;
       this.inboundClick = false; 
       this.s_mode=false;
