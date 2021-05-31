@@ -8,6 +8,8 @@ import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
 
 const routes: Routes = [
@@ -20,7 +22,9 @@ const routes: Routes = [
 {path: 'patientDashboard',component:PatientDashboardComponent},
 {path: 'providerDashobard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
-{path: 'changeUsername', component: ChangeEmailComponent}
+{path: 'changeUsername', component: ChangeEmailComponent},
+{path: 'updatePasswordCheck', component: UpdatePasswordCheckComponent},
+{path: 'updatePassword', component: UpdatePasswordComponent}
 
 
 

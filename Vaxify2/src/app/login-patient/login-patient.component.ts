@@ -60,7 +60,7 @@ export class LoginPatientComponent implements OnInit {
           if (this.user1 != null) {
             sessionStorage.setItem('patient', this.user1.SSN);
             alert('Sucessful');
-            this.router.navigate(['../patient-dashboard'], {
+            this.router.navigate(['../patientDashboard'], {
               relativeTo: this.route,
             });
           }
@@ -83,7 +83,7 @@ export class LoginPatientComponent implements OnInit {
             if (this.user1 != null) {
               sessionStorage.setItem('patient', this.user1.SSN);
               alert('Sucessful');
-              this.router.navigate(['../patient-dashboard'], {
+              this.router.navigate(['../patientDashboard'], {
                 relativeTo: this.route,
               });
             }
