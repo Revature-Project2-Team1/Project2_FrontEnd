@@ -6,8 +6,7 @@ import { AlertService } from '../services/AlertService/alert.service';
 import { NavbarService } from '../services/NavBarService/navbar.service';
 import { LoginServiceService } from '../services/login-service/login.service';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-home',
@@ -64,7 +63,7 @@ export class LoginPatientComponent implements OnInit {
           console.log(this.ssn != null);
           if (this.ssn != null) {
             sessionStorage.setItem('patient', this.ssn);
-            alert('Sucessful');
+            swal('Yay','You are in','success');
             this.router.navigate(['../patient-dashboard'], {
               relativeTo: this.route,
             });
@@ -72,7 +71,7 @@ export class LoginPatientComponent implements OnInit {
         },
 
           (error) => {
-            alert(error.error);
+            swal('Oops',error.error,'error');
           }
         );
     } else {
@@ -87,14 +86,14 @@ export class LoginPatientComponent implements OnInit {
             console.log(this.ssn != null);
             if (this.ssn != null) {
               sessionStorage.setItem('patient', this.ssn);
-              alert('Sucessful');
+              swal('Yay','You are in','success');
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,
               });
             }
           },
           (error) => {
-            alert(error.error);
+            swal('Oops',error.error,'error');
           }
         );
     }
