@@ -24,6 +24,7 @@ import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { ChangeEmailComponent } from './change-email/change-email.component';
 import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { ShowStatsComponent } from './show-stats/show-stats.component';
 
 
 
@@ -42,6 +43,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     ChangeEmailComponent,
     UpdatePasswordCheckComponent,
     UpdatePasswordComponent,
+    ShowStatsComponent,
   ],
   imports: [
     BrowserModule,

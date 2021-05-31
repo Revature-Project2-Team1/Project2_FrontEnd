@@ -12,4 +12,7 @@ export class ProviderDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toStats(){
+    
+  }
 }
