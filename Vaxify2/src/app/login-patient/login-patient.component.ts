@@ -7,6 +7,7 @@ import { NavbarService } from '../services/NavBarService/navbar.service';
 import { LoginServiceService } from '../services/login-service/login.service';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
 import swal from 'sweetalert';
+import { Patient } from '../models/patient';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class LoginPatientComponent implements OnInit {
   myForm:FormGroup;
   inboudClick = false;
   ssn:string;
+  patient:Patient;
 
 
   constructor(
@@ -33,7 +35,7 @@ export class LoginPatientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+
   }
   createForm(){
     this.myForm = this.fb.group({
@@ -53,28 +55,27 @@ export class LoginPatientComponent implements OnInit {
      if (this.myForm.invalid) {
          return;
      }
-    const re =
+   const re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (this.user.username.match(re)) {
       this.loginService
         .validatePatientCredsWithEmail(this.user.username, this.user.password)
         .subscribe((res) => {
-          this.ssn = res;
-          console.log(this.ssn != null);
-          if (this.ssn != null) {
-            sessionStorage.setItem('patient', this.ssn);
+          this.patient = res;
+          //console.log(this.patient != null);
+          if (this.patient != null) {
+            sessionStorage.setItem('patient', this.patient.ssn);
             swal('Yay','You are in','success');
             this.router.navigate(['../patient-dashboard'], {
               relativeTo: this.route,
             });
           }
         },
-
           (error) => {
             swal('Oops',error.error,'error');
           }
         );
-    } else {
+    } else { 
       this.loginService
         .validatePatientCredsWithUsername(
           this.user.username,
@@ -82,10 +83,10 @@ export class LoginPatientComponent implements OnInit {
         )
         .subscribe(
           (res) => {
-            this.ssn = res;
-            console.log(this.ssn != null);
-            if (this.ssn != null) {
-              sessionStorage.setItem('patient', this.ssn);
+            this.patient = res;
+            //console.log(this.patient != null);
+            if (this.patient != null) {
+              sessionStorage.setItem('patient', this.patient.ssn);
               swal('Yay','You are in','success');
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,
