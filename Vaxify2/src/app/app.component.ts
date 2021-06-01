@@ -3,8 +3,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { LoginProviderComponent } from './login-provider/login-provider.component';
+import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
+
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { NavbarService } from './services/NavBarService/navbar.service';
+import { UpdatePatientComponent } from './update-patient/update-patient.component';
 
 
 
@@ -18,27 +21,28 @@ export class AppComponent implements OnInit{
   title = 'Vaxify2';
 
   links: Array<{ text: string, path: string }>;
-  isLoggedIn = false;
+  login_type: string;
+  isLoggedIn=false;
 
   constructor(private router: Router, private navbarService: NavbarService) {
     this.router.config.unshift(
       { path: '/loginPatient', component: LoginPatientComponent },
       { path: '/loginProvider', component: LoginProviderComponent },
       { path: '/registerPatient', component: RegisterPatientComponent },
+      { path: '/patientUpdate', component: UpdatePatientComponent },
+      { path: '/qr-generator-reader', component: QrCodeGeneratorReaderComponent}
     );
   }
 
   ngOnInit() {
+    this.login_type=sessionStorage.getItem('login_status');
     this.links = this.navbarService.getLinks();
-    //this.navbarService.getLoginStatus().subscribe(status => this.isLoggedIn = status);
-    
-  }
 
-  logout() {
-    this.navbarService.updateLoginStatus(false);
-    this.router.navigate(['home']);
+    if (this.login_type){
+      this.isLoggedIn=true;
+    }
+
   }
-  
 
 }
 

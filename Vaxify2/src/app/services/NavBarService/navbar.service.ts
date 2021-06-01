@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -8,11 +9,18 @@ export class NavbarService {
 
   private links = new Array<{ text: string, path: string }>();
   private isLoggedIn = new Subject();
+  login_type: string;
 
-  constructor() {
+  constructor(private router:Router) {
+
+    this.login_type=sessionStorage.getItem('login_type');
+    
+    
     this.addItem({ text: 'Login Patient', path: '/loginPatient' });
     this.addItem({ text: 'Login Provider', path: '/loginProvider' });
-    this.addItem({ text: 'Login Provider', path: '/registerPatient' });
+    this.addItem({ text: 'Register Patient', path: '/registerPatient' });
+  
+    console.log(this.login_type);
     this.isLoggedIn.next(false);
   }
 
@@ -29,17 +37,24 @@ export class NavbarService {
 
     if (!status) {
       this.clearAllItems();
-      this.addItem({ text: 'Login', path: 'login' });
+      this.addItem({ text: 'Login Patient', path: '/loginPatient' });
+      this.addItem({ text: 'Login Provider', path: '/loginProvider' });
+      this.addItem({ text: 'Register Patient', path: '/registerPatient' });
     }
   }
 
   updateNavAfterAuth(role: string): void {
-    this.removeItem({ text: 'Login' });
+    this.clearAllItems();
 
-    if (role === 'user') {
-      this.addItem({ text: 'User Board', path: 'user' });
-    } else if (role === 'admin') {
-      this.addItem({ text: 'Admin Board', path: 'admin' });
+
+    if (role === 'Patient') {
+      this.addItem({ text: 'QR Code', path: '/qr-generator-reader' });
+      this.addItem({ text: 'View Status', path: '/viewStatus' });
+      this.addItem({ text: 'Logout', path: '/logout' });
+
+    } else if (role === 'Provider') {
+      this.addItem({ text: 'Update Patient Vaccine Status', path: '/patientUpdate' });
+      this.addItem({ text: 'Logout', path: '/logout' });
     }
   }
 

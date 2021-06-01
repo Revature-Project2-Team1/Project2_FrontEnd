@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ProviderCreds } from '../models/provider-creds';
 import { AlertService } from '../services/AlertService/alert.service';
+import { NavbarService } from '../services/NavBarService/navbar.service';
 import { LoginProviderService } from '../services/RegisterService/login-provider.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class LoginProviderComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private registerService: LoginProviderService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private navService: NavbarService
   ) { }
 
   ngOnInit(): void {
@@ -62,7 +64,9 @@ export class LoginProviderComponent implements OnInit {
         .subscribe((res) => {
           let name = res;
           if (name.username == this.user.username) {
+            sessionStorage.setItem('login_type', "Provider");
             alert('Successfully logged in');
+              this.navService.updateNavAfterAuth("Provider")
             this.router.navigate(['../provider-dashboard'], {
               relativeTo: this.route,
             });
