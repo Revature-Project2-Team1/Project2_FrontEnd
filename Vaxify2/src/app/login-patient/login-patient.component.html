@@ -16,7 +16,7 @@
           formControlName="input">
           <div *ngIf="inboudClick && f.input.errors" class="invalid-feedback">
             <div *ngIf="f.input.errors.required">Username or Email is required</div>
-            <div *ngIf="f.input.errors.cannotContainSpace">No space</div>
+            <div *ngIf="f.input.errors.cannotContainSpace">No Whitespace Allowed</div>
         </div>
         </div>
         <br>
@@ -26,7 +26,7 @@
             style="align-content:center; margin: 0 auto; width:100%;" type="password" placeholder="Password" formControlName="passwordValidator" >
             <div *ngIf="inboudClick && f.passwordValidator.errors" class="invalid-feedback">
               <div *ngIf="f.passwordValidator.errors.required">Password is required</div>
-              <div *ngIf="f.passwordValidator.errors.cannotContainSpace">No space</div>
+              <div *ngIf="f.passwordValidator.errors.cannotContainSpace">No Whitespace Allowed</div>
           </div>
         </div>
         <br>
