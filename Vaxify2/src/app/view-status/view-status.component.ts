@@ -18,7 +18,7 @@ export class ViewStatusComponent implements OnInit {
   patient: Object;
   responses:VaccineRecord[];
   //ssn = sessionStorage.getItem("patient");
-  ssn="123-12-1234";
+  ssn=sessionStorage.getItem("patient");
   constructor(
     private route: ActivatedRoute,
     private router: Router,
