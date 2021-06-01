@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { LoginProviderComponent } from './login-provider/login-provider.component';
+import { Patient } from './models/patient';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { NavbarService } from './services/NavBarService/navbar.service';
 
@@ -35,6 +36,10 @@ export class AppComponent implements OnInit{
   }
 
   logout() {
+    console.log("Logout");
+    sessionStorage.getItem('patient');
+    sessionStorage.clear;
+    this.isLoggedIn=false;
     this.navbarService.updateLoginStatus(false);
     this.router.navigate(['home']);
   }
