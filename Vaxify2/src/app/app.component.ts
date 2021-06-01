@@ -37,8 +37,9 @@ export class AppComponent implements OnInit{
 
   logout() {
     console.log("Logout");
-    sessionStorage.getItem('patient');
-    sessionStorage.clear;
+    console.log(sessionStorage.getItem('patient'));
+    sessionStorage.clear();
+    console.log(sessionStorage.getItem('patient'));
     this.isLoggedIn=false;
     this.navbarService.updateLoginStatus(false);
     this.router.navigate(['home']);
