@@ -7,6 +7,7 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
 import { NavbarService } from './services/NavBarService/navbar.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

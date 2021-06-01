@@ -6,6 +6,8 @@ import { AlertService } from '../services/AlertService/alert.service';
 import { UpdatePasswordService } from '../services/update-password/update-password.service';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
 import { ConfirmedValidator } from '../Validators/password';
+import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-update-password',
@@ -59,14 +61,14 @@ export class UpdatePasswordComponent implements OnInit {
     this.updatePasswordService
     .updatePassword(this.user.password, this.email)
     .subscribe((res) => {
-        alert('Your password sucessfully updated');
+      swal('Yay','Your new password is all set','success');
         this.router.navigate(['../loginPatient'], {
         relativeTo: this.route,
         });
       
     },
       (error) => {
-        alert(error.error);
+        swal('Oops',error.error,'error');
       }
     );
     

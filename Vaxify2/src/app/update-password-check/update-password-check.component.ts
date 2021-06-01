@@ -8,7 +8,7 @@ import { AlertService } from '../services/AlertService/alert.service';
 import { PatientCreds } from '../models/patient-creds';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
 import { UpdatePasswordService } from '../services/update-password/update-password.service';
-
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-update-password-check',
@@ -55,7 +55,7 @@ export class UpdatePasswordCheckComponent implements OnInit {
     .subscribe((res) => {
       this.status = res;
       if (this.status == true) {
-        alert('We found you');
+        swal('Yay','We found you','success');
         sessionStorage.setItem('patient_email', this.user.email);
         this.router.navigate(['../updatePassword'], {
           relativeTo: this.route,
@@ -63,7 +63,9 @@ export class UpdatePasswordCheckComponent implements OnInit {
       }
     },
       (error) => {
-        alert(error.error);
+        
+        swal('Oops',error.error,'error');
+
       }
     );
 

@@ -9,6 +9,7 @@ import {RegisterService} from '../services/RegisterService/register.service';
 import { AlertService } from '../services/AlertService/alert.service';
 import { PatientCreds } from '../models/patient-creds';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
+import swal from 'sweetalert';
 
 
 @Component({
@@ -66,14 +67,15 @@ registerPatientCreds(){
         .subscribe((res) => {
           this.status = res;
           if (this.status == true) {
-            alert('Congrats you sucessfully registered');
+            swal('Yay','You are sucessfully registered','sucess');
             this.router.navigate(['../loginPatient'], {
               relativeTo: this.route,
             });
           }
         },
           (error) => {
-            alert(error.error);
+            swal('Oops',error.error,'error');
+
           }
         );
 
