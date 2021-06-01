@@ -26,7 +26,8 @@ export class LoginPatientComponent implements OnInit {
     private router: Router,
     private loginService: LoginServiceService,
     private fb: FormBuilder,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private navService: NavbarService
   ) {
     this.user = new PatientCreds();
     this.createForm();
@@ -63,7 +64,9 @@ export class LoginPatientComponent implements OnInit {
           console.log(this.ssn != null);
           if (this.ssn != null) {
             sessionStorage.setItem('patient', this.ssn);
+            sessionStorage.setItem('login_type', "Patient");
             swal('Yay','You are in','success');
+            this.navService.updateNavAfterAuth("Patient")
             this.router.navigate(['../patient-dashboard'], {
               relativeTo: this.route,
             });
@@ -86,7 +89,11 @@ export class LoginPatientComponent implements OnInit {
             console.log(this.ssn != null);
             if (this.ssn != null) {
               sessionStorage.setItem('patient', this.ssn);
+              sessionStorage.setItem('login-type', "Patient");
+
               swal('Yay','You are in','success');
+              this.navService.updateLoginStatus(true);
+              this.navService.updateNavAfterAuth("Patient")
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,
               });

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
-import { Router } from '@angular/router';
 import { Patient } from '../models/patient';
 import { PatientService } from '../services/PatientService/patient.service';
 import QrcodeDecoder from 'qrcode-decoder';
-import { timestamp } from 'rxjs/operators';
 import { QRrecord } from '../models/qrrecord';
 
 
@@ -30,7 +28,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   inboundClick = true;
   s_mode = true;
 
-  current_user = "1"; //ssn
+  current_user = sessionStorage.getItem('patient'); //ssn
   scan_mode: string;
   pic_name = "pending_status";
   pic_name2 = "";

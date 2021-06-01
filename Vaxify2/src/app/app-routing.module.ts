@@ -4,6 +4,7 @@ import { ChangeEmailComponent } from './change-email/change-email.component';
 import { HomeComponent } from './home/home.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
 import { LoginProviderComponent } from './login-provider/login-provider.component';
+import { LogoutComponent } from './logout/logout.component';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
 {path: 'changeUsername', component: ChangeEmailComponent},
 {path: 'viewStatus', component: ViewStatusComponent},
 {path: 'updatePasswordCheck', component: UpdatePasswordCheckComponent},
-{path: 'updatePassword', component: UpdatePasswordComponent}
+{path: 'updatePassword', component: UpdatePasswordComponent},
+{path: 'logout', component: LogoutComponent}
 ]
 
 

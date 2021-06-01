@@ -25,6 +25,7 @@ import { ChangeEmailComponent } from './change-email/change-email.component';
 import { ViewStatusComponent } from './view-status/view-status.component';
 import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -44,6 +45,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     ViewStatusComponent,
     UpdatePasswordCheckComponent,
     UpdatePasswordComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
