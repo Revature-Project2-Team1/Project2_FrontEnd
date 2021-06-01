@@ -72,6 +72,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
 
     this.service.addQR(this.qr_record).subscribe(res=>{
       this.qr_record=new QRrecord();
+      console.log(res)
 
     })
 
@@ -135,21 +136,28 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
     this.correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
     this.service.generateQR(this.current_user).subscribe(res => {
-      this.patient=res;
-      this.patient_status=this.patient.status;
-      this.upload_value=this.patient_status;
-      this.n_patient.ssn=this.patient.ssn;
+      console.log(res.status)
+      this.patient_status=res.status;
+      this.upload_value=res.status;
+      this.qr_record.ssn=res.customerSSN;
+
+      this.n_patient.customerSSN=res.customerSSN;
+
+      console.log(this.n_patient);
 
       this.qr_record.patient=this.n_patient;
+
+      console.log(this.qr_record)
+
       this.qr_record.time_stamp=Date.now();
 
-      this.value=this.patient.status +'\n' + this.patient.fullName +'\n'+this.qr_record.time_stamp;
+      this.value=res.status +'\n' + res.fullName +'\n'+this.qr_record.time_stamp;
 
       this.addQR();
 
       this.inboundClick = false; 
       this.s_mode=false;
-      this.scan_mode=this.patient.fullName;
+      this.scan_mode=res.fullName;
       if(this.upload_value=="vaccinated"|| this.upload_value=="Fully Vaccinated"){
         
         this.pic_name="verified_status"

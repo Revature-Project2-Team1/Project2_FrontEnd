@@ -66,13 +66,13 @@ export class LoginPatientComponent implements OnInit {
           if (this.patient != null) {
             sessionStorage.setItem('patient', this.patient.ssn);
             swal('Yay','You are in','success');
-            this.router.navigate(['../patient-dashboard'], {
+            this.router.navigate(['/patient-dashboard'], {
               relativeTo: this.route,
             });
           }
         },
           (error) => {
-            swal('Oops',error.error,'error');
+            swal('Oops',error.error);
           }
         );
     } else { 
@@ -94,7 +94,7 @@ export class LoginPatientComponent implements OnInit {
             }
           },
           (error) => {
-            swal('Oops',error.error,'error');
+            swal('Oops',error.error);
           }
         );
     }
