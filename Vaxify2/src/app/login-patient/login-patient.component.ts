@@ -64,14 +64,14 @@ export class LoginPatientComponent implements OnInit {
           if (this.ssn != null) {
             sessionStorage.setItem('patient', this.ssn);
             swal('Yay','You are in','success');
-            this.router.navigate(['../patient-dashboard'], {
+            this.router.navigate(['/patient-dashboard'], {
               relativeTo: this.route,
             });
           }
         },
 
           (error) => {
-            swal('Oops',error.error,'error');
+            swal('Oops',error.error);
           }
         );
     } else {
@@ -86,14 +86,14 @@ export class LoginPatientComponent implements OnInit {
             console.log(this.ssn != null);
             if (this.ssn != null) {
               sessionStorage.setItem('patient', this.ssn);
-              swal('Yay','You are in','success');
-              this.router.navigate(['../patient-dashboard'], {
+              swal('Yay','You are in');
+              this.router.navigate(['/patient-dashboard'], {
                 relativeTo: this.route,
               });
             }
           },
           (error) => {
-            swal('Oops',error.error,'error');
+            swal('Oops',error.error);
           }
         );
     }
