@@ -43,6 +43,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   code: any;
   reset = new Blob();
 
+
   reader = new FileReader();
   pic = new Image();
   qr = new QrcodeDecoder();

@@ -7,6 +7,7 @@ import { NavbarService } from '../services/NavBarService/navbar.service';
 import { LoginServiceService } from '../services/login-service/login.service';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
 import swal from 'sweetalert';
+import { Patient } from '../models/patient';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class LoginPatientComponent implements OnInit {
   myForm:FormGroup;
   inboudClick = false;
   ssn:string;
+  patient:Patient;
 
 
   constructor(
@@ -34,7 +36,7 @@ export class LoginPatientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+
   }
   createForm(){
     this.myForm = this.fb.group({
@@ -54,7 +56,7 @@ export class LoginPatientComponent implements OnInit {
      if (this.myForm.invalid) {
          return;
      }
-    const re =
+   const re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (this.user.username.match(re)) {
       this.loginService
@@ -65,6 +67,7 @@ export class LoginPatientComponent implements OnInit {
           if (this.ssn != null) {
             sessionStorage.setItem('patient', this.ssn);
             sessionStorage.setItem('login_type', "Patient");
+
             swal('Yay','You are in','success');
             this.navService.updateNavAfterAuth("Patient")
             this.router.navigate(['../patient-dashboard'], {
@@ -72,12 +75,11 @@ export class LoginPatientComponent implements OnInit {
             });
           }
         },
-
           (error) => {
             swal('Oops',error.error);
           }
         );
-    } else {
+    } else { 
       this.loginService
         .validatePatientCredsWithUsername(
           this.user.username,
@@ -94,6 +96,7 @@ export class LoginPatientComponent implements OnInit {
               swal('Yay','You are in','success');
               this.navService.updateLoginStatus(true);
               this.navService.updateNavAfterAuth("Patient")
+
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,
               });

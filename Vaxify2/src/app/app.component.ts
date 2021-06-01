@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { LoginProviderComponent } from './login-provider/login-provider.component';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
+
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { NavbarService } from './services/NavBarService/navbar.service';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
@@ -42,13 +43,6 @@ export class AppComponent implements OnInit{
     }
 
   }
-
-
-    
-  
-
- 
-  
 
 }
 

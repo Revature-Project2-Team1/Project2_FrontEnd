@@ -17,7 +17,7 @@ export class LoginServiceService {
     this.urllogin1 ="http://localhost:9000/patient/email-login/"  
 }
 public validatePatientCredsWithUsername(username,password):Observable<any>{
-  return this.http.get<any>(this.urllogin+username +"/"+password)/* .pipe(catchError(this.handleError)) */;
+  return this.http.get<any>(this.urllogin+ username +"/"+password)/* .pipe(catchError(this.handleError)) */;
 }
 /* private handleError(httpError: HttpErrorResponse) {
   if (httpError.error instanceof ErrorEvent) {
