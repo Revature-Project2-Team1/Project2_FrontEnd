@@ -23,6 +23,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { LoginPatientComponent } from './login-patient/login-patient.component';
 import { ChangeEmailComponent } from './change-email/change-email.component';
 import { ViewStatusComponent } from './view-status/view-status.component';
+import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 
 
@@ -40,6 +42,8 @@ import { ViewStatusComponent } from './view-status/view-status.component';
     UpdatePatientComponent,
     ChangeEmailComponent,
     ViewStatusComponent,
+    UpdatePasswordCheckComponent,
+    UpdatePasswordComponent,
   ],
   imports: [
     BrowserModule,

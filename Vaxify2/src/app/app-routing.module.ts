@@ -8,6 +8,8 @@ import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { QrCodeGeneratorReaderComponent } from './qr-code-generator-reader/qr-code-generator-reader.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { UpdatePasswordCheckComponent } from './update-password-check/update-password-check.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
 import { ViewStatusComponent} from './view-status/view-status.component';
 const routes: Routes = [
@@ -17,15 +19,14 @@ const routes: Routes = [
 {path: 'loginProvider', component:LoginProviderComponent},
 {path: 'registerPatient', component:RegisterPatientComponent},
 {path: 'qr-generator-reader', component:QrCodeGeneratorReaderComponent},
-{path: 'patientDashboard',component:PatientDashboardComponent},
-{path: 'providerDashobard', component:ProviderDashboardComponent},
+{path: 'patient-dashboard',component:PatientDashboardComponent},
+{path: 'provider-dashboard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
 {path: 'changeUsername', component: ChangeEmailComponent},
-{path: 'viewStatus', component: ViewStatusComponent}
-
-
-
-];
+{path: 'viewStatus', component: ViewStatusComponent},
+{path: 'updatePasswordCheck', component: UpdatePasswordCheckComponent},
+{path: 'updatePassword', component: UpdatePasswordComponent}
+]
 
 
 

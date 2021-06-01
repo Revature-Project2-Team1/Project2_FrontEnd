@@ -6,6 +6,7 @@ import { AlertService } from '../services/AlertService/alert.service';
 import { NavbarService } from '../services/NavBarService/navbar.service';
 import { LoginServiceService } from '../services/login-service/login.service';
 import { NoWhiteSpaceValidator } from '../Validators/no-whitespace';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class LoginPatientComponent implements OnInit {
   user1: PatientCreds;
   myForm:FormGroup;
   inboudClick = false;
+  ssn:string;
 
 
   constructor(
@@ -40,6 +42,8 @@ export class LoginPatientComponent implements OnInit {
      });
   }
 
+
+
   get f() { return this.myForm.controls; } //used to get form fields
 
   validatePatientCreds(): void {
@@ -55,11 +59,11 @@ export class LoginPatientComponent implements OnInit {
       this.loginService
         .validatePatientCredsWithEmail(this.user.username, this.user.password)
         .subscribe((res) => {
-          this.user1 = res;
-          console.log(this.user1 != null);
-          if (this.user1 != null) {
-            sessionStorage.setItem('patient', this.user1.SSN);
-            alert('Sucessful');
+          this.ssn = res;
+          console.log(this.ssn != null);
+          if (this.ssn != null) {
+            sessionStorage.setItem('patient', this.ssn);
+            swal('Yay','You are in','success');
             this.router.navigate(['../patient-dashboard'], {
               relativeTo: this.route,
             });
@@ -67,7 +71,7 @@ export class LoginPatientComponent implements OnInit {
         },
 
           (error) => {
-            alert(error.error);
+            swal('Oops',error.error,'error');
           }
         );
     } else {
@@ -78,18 +82,18 @@ export class LoginPatientComponent implements OnInit {
         )
         .subscribe(
           (res) => {
-            this.user1 = res;
-            console.log(this.user1 != null);
-            if (this.user1 != null) {
-              sessionStorage.setItem('patient', this.user1.SSN);
-              alert('Sucessful');
+            this.ssn = res;
+            console.log(this.ssn != null);
+            if (this.ssn != null) {
+              sessionStorage.setItem('patient', this.ssn);
+              swal('Yay','You are in','success');
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,
               });
             }
           },
           (error) => {
-            alert(error.error);
+            swal('Oops',error.error,'error');
           }
         );
     }

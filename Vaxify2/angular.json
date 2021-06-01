@@ -90,7 +90,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css"            
             ],
             "scripts": []
           }
@@ -125,3 +125,4 @@
   },
   "defaultProject": "Vaxify2"
 }
+
