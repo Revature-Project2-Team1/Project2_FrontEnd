@@ -64,7 +64,7 @@ export class LoginPatientComponent implements OnInit {
           this.patient = res;
           //console.log(this.patient != null);
           if (this.patient != null) {
-            sessionStorage.setItem('patient', this.patient.ssn);
+            sessionStorage.setItem('patient', this.patient.customerSSN);
             swal('Yay','You are in','success');
             this.router.navigate(['/patient-dashboard'], {
               relativeTo: this.route,
@@ -86,7 +86,7 @@ export class LoginPatientComponent implements OnInit {
             this.patient = res;
             //console.log(this.patient != null);
             if (this.patient != null) {
-              sessionStorage.setItem('patient', this.patient.ssn);
+              sessionStorage.setItem('patient', this.patient.customerSSN);
               swal('Yay','You are in','success');
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,

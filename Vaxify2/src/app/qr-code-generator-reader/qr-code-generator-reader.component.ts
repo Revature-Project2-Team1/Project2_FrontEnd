@@ -30,7 +30,7 @@ export class QrCodeGeneratorReaderComponent implements OnInit {
   inboundClick=true;
   s_mode=true;
   
-  current_user="3"; //ssn
+  current_user=sessionStorage.getItem('patient'); //ssn
   scan_mode:string;
   pic_name="pending_status";
   pic_name2="";
