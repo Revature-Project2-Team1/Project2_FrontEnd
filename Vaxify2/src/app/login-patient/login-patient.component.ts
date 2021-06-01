@@ -28,7 +28,8 @@ export class LoginPatientComponent implements OnInit {
     private router: Router,
     private loginService: LoginServiceService,
     private fb: FormBuilder,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private navService: NavbarService
   ) {
     this.user = new PatientCreds();
     this.createForm();
@@ -61,12 +62,15 @@ export class LoginPatientComponent implements OnInit {
       this.loginService
         .validatePatientCredsWithEmail(this.user.username, this.user.password)
         .subscribe((res) => {
-          this.patient = res;
-          //console.log(this.patient != null);
-          if (this.patient != null) {
-            sessionStorage.setItem('patient', this.patient.customerSSN);
+          this.ssn = res;
+          console.log(this.ssn != null);
+          if (this.ssn != null) {
+            sessionStorage.setItem('patient', this.ssn);
+            sessionStorage.setItem('login_type', "Patient");
+
             swal('Yay','You are in','success');
-            this.router.navigate(['/patient-dashboard'], {
+            this.navService.updateNavAfterAuth("Patient")
+            this.router.navigate(['../patient-dashboard'], {
               relativeTo: this.route,
             });
           }
@@ -83,11 +87,16 @@ export class LoginPatientComponent implements OnInit {
         )
         .subscribe(
           (res) => {
-            this.patient = res;
-            //console.log(this.patient != null);
-            if (this.patient != null) {
-              sessionStorage.setItem('patient', this.patient.customerSSN);
+            this.ssn = res;
+            console.log(this.ssn != null);
+            if (this.ssn != null) {
+              sessionStorage.setItem('patient', this.ssn);
+              sessionStorage.setItem('login-type', "Patient");
+
               swal('Yay','You are in','success');
+              this.navService.updateLoginStatus(true);
+              this.navService.updateNavAfterAuth("Patient")
+
               this.router.navigate(['../patient-dashboard'], {
                 relativeTo: this.route,
               });

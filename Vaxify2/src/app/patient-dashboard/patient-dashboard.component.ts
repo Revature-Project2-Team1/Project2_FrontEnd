@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientDashboardComponent implements OnInit {
   ssn:string;
+  login_type:string;
   constructor() { }
 
   ngOnInit(): void {
     this.ssn=sessionStorage.getItem('patient');
+    this.login_type=sessionStorage.getItem('login_type');
+
 
   }
 

@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./provider-dashboard.component.css']
 })
 export class ProviderDashboardComponent implements OnInit {
+  login_type:string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.login_type=sessionStorage.getItem('login_type');
   }
 
 }
