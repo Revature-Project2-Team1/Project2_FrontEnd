@@ -62,6 +62,7 @@ export class LoginPatientComponent implements OnInit {
       this.loginService
         .validatePatientCredsWithEmail(this.user.username, this.user.password)
         .subscribe((res) => {
+
           this.ssn = res;
           console.log(this.ssn != null);
           if (this.ssn != null) {
@@ -87,6 +88,7 @@ export class LoginPatientComponent implements OnInit {
         )
         .subscribe(
           (res) => {
+
             this.ssn = res;
             console.log(this.ssn != null);
             if (this.ssn != null) {
