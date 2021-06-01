@@ -2470,7 +2470,7 @@ class LoginPatientComponent {
             this.loginService
                 .validatePatientCredsWithEmail(this.user.username, this.user.password)
                 .subscribe((res) => {
-                this.ssn = res;
+                this.ssn = res.customerSSN;
                 console.log(this.ssn != null);
                 if (this.ssn != null) {
                     sessionStorage.setItem('patient', this.ssn);
@@ -2489,7 +2489,8 @@ class LoginPatientComponent {
             this.loginService
                 .validatePatientCredsWithUsername(this.user.username, this.user.password)
                 .subscribe((res) => {
-                this.ssn = res;
+                this.ssn = res.customerSSN;
+                console.log(res);
                 console.log(this.ssn != null);
                 if (this.ssn != null) {
                     sessionStorage.setItem('patient', this.ssn);
