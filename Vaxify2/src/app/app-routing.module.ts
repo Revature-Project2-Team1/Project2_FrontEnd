@@ -23,9 +23,10 @@ const routes: Routes = [
 {path: 'provider-dashboard', component:ProviderDashboardComponent},
 {path: 'patientUpdate', component:UpdatePatientComponent},
 {path: 'changeUsername', component: ChangeEmailComponent},
-{path: 'viewStatus', component: ViewStatusComponent}
+{path: 'viewStatus', component: ViewStatusComponent},
 {path: 'updatePasswordCheck', component: UpdatePasswordCheckComponent},
 {path: 'updatePassword', component: UpdatePasswordComponent}
+]
 
 
 
