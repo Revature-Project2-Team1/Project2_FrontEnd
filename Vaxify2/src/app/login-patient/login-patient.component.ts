@@ -63,7 +63,7 @@ export class LoginPatientComponent implements OnInit {
         .validatePatientCredsWithEmail(this.user.username, this.user.password)
         .subscribe((res) => {
 
-          this.ssn = res;
+          this.ssn = res.customerSSN;
           console.log(this.ssn != null);
           if (this.ssn != null) {
             sessionStorage.setItem('patient', this.ssn);
@@ -89,9 +89,11 @@ export class LoginPatientComponent implements OnInit {
         .subscribe(
           (res) => {
 
-            this.ssn = res;
+            this.ssn = res.customerSSN;
+            console.log(res);
             console.log(this.ssn != null);
             if (this.ssn != null) {
+
               sessionStorage.setItem('patient', this.ssn);
               sessionStorage.setItem('login-type', "Patient");
 
