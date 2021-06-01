@@ -26,12 +26,12 @@ export class PatientService {
     return this.http.get<any>(this.urlQR+"find-patient/"+patient_ssn);
   }
 
-  public deleteQR(patient_ssn):Observable<any> {
+  public deleteQR(patient_ssn):Observable<Patient> {
     return this.http.delete<any>(this.urlQR+"delete/"+patient_ssn);
   }
 
-  public checkQR(qr_id,patient_id):Observable<any> {
+  public checkQR(qr_id):Observable<any> {
 
-    return this.http.get<any>(this.urlQR+"check-qr/"+patient_id +"/"+qr_id);
+    return this.http.get<any>(this.urlQR+"check-qr/"+qr_id);
   }
 }
