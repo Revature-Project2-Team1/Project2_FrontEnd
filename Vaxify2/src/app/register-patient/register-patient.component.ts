@@ -45,7 +45,7 @@ export class RegisterPatientComponent implements OnInit {
       usernameValidator:['', [Validators.required, NoWhiteSpaceValidator.cannotContainSpace]],
       emailValidator:['',[ Validators.required, Validators.email,NoWhiteSpaceValidator.cannotContainSpace]],
       ssnValidator:['', [Validators.required, Validators.pattern('^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$'),NoWhiteSpaceValidator.cannotContainSpace]],
-      passwordValidator:['',[Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$'),NoWhiteSpaceValidator.cannotContainSpace]],
+      passwordValidator:['',[Validators.required, Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}'),NoWhiteSpaceValidator.cannotContainSpace]],
      });
   }
   get f() { return this.myForm.controls; } //used to get form fields

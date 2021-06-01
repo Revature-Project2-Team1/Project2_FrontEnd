@@ -37,7 +37,7 @@ export class UpdatePasswordComponent implements OnInit {
   }
   createForm() {
     this.myForm = this.fb.group({
-      passwordValidator:['',[ Validators.required,Validators.pattern('^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'),NoWhiteSpaceValidator.cannotContainSpace]],
+      passwordValidator:['',[ Validators.required,Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}'),NoWhiteSpaceValidator.cannotContainSpace]],
       password1Validator:['', [Validators.required,NoWhiteSpaceValidator.cannotContainSpace]]},
 
       { 
