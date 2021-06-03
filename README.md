@@ -64,4 +64,4 @@ git clone https://github.com/Revature-Project2-Team1/Project2_FrontEnd.git
 
 ## Usage
 
-> Run the .jar file or through an IDE for the backend and run the ng serve and go to localhost to begin the application. You can login as a Patient to see your vaccine status and generate a QR code to show your status. You are also able to scan a QR code on your computer to see the status of the holder of that Qr code. You then have to logout to register as a patient to connect your login infomation and your medical status. Login into professional to add a shot date to a patient, logout after that.
+> Run the .jar file or through an IDE for the backend and run the ng serve and go to localhost to begin the application. You can login as a Patient to see your vaccine status and generate a QR code to show your status. You are also able to scan a QR code on your computer to see the status of the holder of that Qr code. You then have to logout to register as a patient to connect your login information and your medical status. Login into professional to add a shot date to a patient, logout after that.
